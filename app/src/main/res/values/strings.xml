@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">HUNGRY FOODIE</string>
+    <string name="next">NEXT</string>
+    <string name="previous">Previous</string>
+
+    <string name="title_login">LOG IN</string>
+    <string name="prompt_email">name@example.com</string>
+    <string name="prompt_password">Password</string>
+    <string name="title_signup">Sign UP</string>
+    <string name="restaurants_menu">Menu</string>
+    <string name="restaurants_list">Restaurants List</string>
+    <string name="restaurants_pic">Restaurants Picture</string>
+</resources>
