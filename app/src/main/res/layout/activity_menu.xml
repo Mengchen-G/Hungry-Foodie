@@ -19,4 +19,39 @@
         android:typeface="monospace"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/burger_btn"
+        android:layout_width="225dp"
+        android:layout_height="228dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginLeft="41dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginRight="41dp"
+        android:layout_marginBottom="354dp"
+        android:contentDescription="@burger_meal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menuTextView"
+        app:srcCompat="@drawable/burger" />
+
+    <ImageButton
+        android:id="@+id/hotdog_btn"
+        android:layout_width="204dp"
+        android:layout_height="251dp"
+        android:layout_marginStart="103dp"
+        android:layout_marginLeft="103dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginRight="104dp"
+        android:layout_marginBottom="65dp"
+        android:contentDescription="@hotdog_meal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/burger_btn"
+        app:srcCompat="@drawable/hotdog" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
