@@ -2,7 +2,6 @@
     <string name="app_name">HUNGRY FOODIE</string>
     <string name="next">NEXT</string>
     <string name="previous">Previous</string>
-
     <string name="title_login">LOG IN</string>
     <string name="prompt_email">name@example.com</string>
     <string name="prompt_password">Password</string>
@@ -11,4 +10,11 @@
     <string name="restaurants_list">Restaurants List</string>
     <string name="restaurants_pic">Restaurants Picture</string>
     <string name="check_out">Check Out</string>
+    <string name="Item">Item</string>
+    <string name="Price">Price</string>
+    <string name="Burger_Meal">Burger Meal</string>
+    <string name="Hotdog_Meal">Hot Dog Meal</string>
+    <string name="Burger">Burger</string>
+    <string name="Hotdog">Hot Dog</string>
+    <string name="Pepsi">Pepsi</string>
 </resources>
