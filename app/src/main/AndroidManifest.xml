@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Menu2Activity"></activity>
+        <activity android:name=".PlaceAnOrder"></activity>
+        <activity android:name=".Menu2Activity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".LoginActivity" />

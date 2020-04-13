@@ -18,7 +18,7 @@ public class MenuActivity extends AppCompatActivity {
         burgerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent startIntent = new Intent(getApplicationContext(), PlaceAnOrder.class);
+                Intent startIntent = new Intent(MenuActivity.this, PlaceAnOrder.class);
                 startActivity(startIntent);
             }
         });
