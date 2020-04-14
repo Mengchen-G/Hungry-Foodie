@@ -32,7 +32,11 @@ public class PlaceAnOrder extends AppCompatActivity {
 
         ArrayList<Order> orderList = new ArrayList<>();
         Restaurant rest1 = new AmericanRestaurant();
-        Meal meal = rest1.createMeal("Burger");
+        //get the bundle
+        Bundle bundle = getIntent().getExtras();
+        //Extract the data
+        String order_name = bundle.getString("order_name");
+        Meal meal = rest1.createMeal(order_name);
         Order order = new Order(meal, 1);
 
         ListView mListView = (ListView) findViewById(R.id.cart_list);
@@ -45,7 +49,6 @@ public class PlaceAnOrder extends AppCompatActivity {
 
         OrderListAdapter adapter = new OrderListAdapter(this, R.layout.cart_items_layout, orderList);
         mListView.setAdapter(adapter);
-        Log.d(TAG, "onCreate: ended.");
 
     }
 

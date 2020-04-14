@@ -9,28 +9,47 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="60"
-        android:weightSum="100">
+        android:layout_weight="40"
+        android:weightSum="40">
 
+        <TextView
+            android:id="@+id/cart_meal_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_weight="15"
+            android:gravity="center"
+            android:text="q"
+            android:textAlignment="center"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/cart_meal_name"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:layout_weight="60"
+            android:layout_weight="10"
             android:gravity="center"
-            android:text="TextView1"
+            android:text="name"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/cart_meal_prince"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_weight="15"
+            android:gravity="center"
+            android:text="Price"
             android:textAlignment="center"
             android:textStyle="bold" />
 
     </LinearLayout>
 
 
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="40">
+        android:layout_weight="60">
 
         <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -41,18 +60,18 @@
 
             <TextView
                 android:gravity="center"
-                android:text="TextView2"
+                android:text="name"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_weight="20"
+                android:layout_weight="15"
                 android:id="@+id/cart_entree_name"/>
 
             <TextView
                 android:gravity="center"
-                android:text="TextView2"
+                android:text="@string/Price"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_weight="20"
+                android:layout_weight="25"
                 android:id="@+id/cart_entree_price"/>
         </LinearLayout>
 
@@ -65,19 +84,19 @@
 
             <TextView
                 android:gravity="center"
-                android:text="TextView3"
+                android:text="name"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_weight="20"
+                android:layout_weight="15"
                 android:id="@+id/cart_drink_name"
                 android:layout_below="@+id/textView2"/>
 
             <TextView
                 android:gravity="center"
-                android:text="TextView3"
+                android:text="@string/Price"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_weight="20"
+                android:layout_weight="25"
                 android:id="@+id/cart_drink_price"
                 android:layout_below="@+id/textView2"/>
         </LinearLayout>

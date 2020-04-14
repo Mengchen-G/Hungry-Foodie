@@ -15,6 +15,7 @@ import com.example.myapplication.abfactory.Entree;
 import com.example.myapplication.abfactory.Meal;
 import com.example.myapplication.abfactory.Order;
 
+import java.security.SecurityPermission;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,22 +50,27 @@ public class OrderListAdapter extends ArrayAdapter<Order> {
         String sPrice = String.valueOf(price);
         String sEntreePrice = String.valueOf(entree_price);
         String sDrinkPrice = String.valueOf(drink_price);
+        String sQuantity = String.valueOf(quantity);
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         //convertView = inflater.inflate(mResource, parent, false);
         convertView = inflater.inflate(mResource, null);
 
+        TextView txtMealQuantity = (TextView) convertView.findViewById(R.id.cart_meal_quantity);
         TextView txtMealName = (TextView) convertView.findViewById(R.id.cart_meal_name);
+        TextView txtMealPrice = (TextView) convertView.findViewById(R.id.cart_meal_prince);
         TextView txtEntreeName = (TextView) convertView.findViewById(R.id.cart_entree_name);
         TextView txtEntreePrice = (TextView) convertView.findViewById(R.id.cart_entree_price);
         TextView txtDrinkName = (TextView) convertView.findViewById(R.id.cart_drink_name);
         TextView txtDrinkPrice = (TextView) convertView.findViewById(R.id.cart_drink_price);
 
+        txtMealQuantity.setText(sQuantity);
         txtMealName.setText(entreeName + " meal");
+        txtMealPrice.setText("$" + sPrice);
         txtEntreeName.setText(entreeName);
-        txtEntreePrice.setText(sEntreePrice);
+        txtEntreePrice.setText("$" + sEntreePrice);
         txtDrinkName.setText(drinkName);
-        txtDrinkPrice.setText(sDrinkPrice);
+        txtDrinkPrice.setText("$" + sDrinkPrice);
         return convertView;
     }
 }
