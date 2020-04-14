@@ -27,16 +27,13 @@
 
     </RelativeLayout>
 
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/r111"
         android:layout_above="@+id/next_process_btn"
-
         android:id="@+id/cart_list"/>
-
-
-
 
     <Button
         android:id="@+id/next_process_btn"
@@ -49,8 +46,5 @@
         android:textSize="40dp">
 
     </Button>
-
-
-
 
 </RelativeLayout>
