@@ -55,7 +55,7 @@ public class OrderListAdapter extends ArrayAdapter<Order> {
         String sQuantity = String.valueOf(quantity);
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        //convertView = inflater.inflate(mResource, parent, false);
+
         convertView = inflater.inflate(mResource, null);
 
 //        EditText txtMealQuantity = (EditText) convertView.findViewById(R.id.cart_meal_quantity);
@@ -74,6 +74,7 @@ public class OrderListAdapter extends ArrayAdapter<Order> {
         txtEntreePrice.setText("$" + sEntreePrice);
         txtDrinkName.setText(drinkName);
         txtDrinkPrice.setText("$" + sDrinkPrice);
+
         return convertView;
     }
 }
