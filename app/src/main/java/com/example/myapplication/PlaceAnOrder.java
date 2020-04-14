@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -39,6 +40,7 @@ public class PlaceAnOrder extends AppCompatActivity {
         Meal meal = rest1.createMeal(order_name);
         Order order = new Order(meal, 1);
 
+
         ListView mListView = (ListView) findViewById(R.id.cart_list);
         Log.d(TAG, "onCreate: Started.");
 //
@@ -46,9 +48,16 @@ public class PlaceAnOrder extends AppCompatActivity {
 //        txtTotalAmount = (TextView) findViewById(R.id.total_price);
 
         orderList.add(order);
-
         OrderListAdapter adapter = new OrderListAdapter(this, R.layout.cart_items_layout, orderList);
         mListView.setAdapter(adapter);
+
+//        EditText quantity = (EditText) findViewById(R.id.cart_meal_quantity);
+//        int quant1 = Integer.parseInt(quantity.getText().toString());
+//        order.setQuantity(quant1);
+//        orderList.add(order);
+//        OrderListAdapter adapter1 = new OrderListAdapter(this, R.layout.cart_items_layout, orderList);
+//        mListView.setAdapter(adapter1);
+
 
     }
 

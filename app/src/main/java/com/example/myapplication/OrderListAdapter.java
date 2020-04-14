@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import com.example.myapplication.abfactory.Order;
 import java.security.SecurityPermission;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class OrderListAdapter extends ArrayAdapter<Order> {
     private Context mContext;
@@ -56,6 +58,7 @@ public class OrderListAdapter extends ArrayAdapter<Order> {
         //convertView = inflater.inflate(mResource, parent, false);
         convertView = inflater.inflate(mResource, null);
 
+//        EditText txtMealQuantity = (EditText) convertView.findViewById(R.id.cart_meal_quantity);
         TextView txtMealQuantity = (TextView) convertView.findViewById(R.id.cart_meal_quantity);
         TextView txtMealName = (TextView) convertView.findViewById(R.id.cart_meal_name);
         TextView txtMealPrice = (TextView) convertView.findViewById(R.id.cart_meal_prince);
