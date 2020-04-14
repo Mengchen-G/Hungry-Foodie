@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PlaceAnOrder">
-    
+
     <RelativeLayout
         android:id="@+id/r111"
         android:layout_width="match_parent"
@@ -18,22 +18,25 @@
             android:id="@+id/total_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_marginTop="30dp"
+            android:fontFamily="monospace"
             android:gravity="center"
-            android:text="Cart "
+            android:text="Cart"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="40dp" />
+            android:textSize="30sp" />
 
     </RelativeLayout>
-
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/r111"
         android:layout_above="@+id/next_process_btn"
+
         android:id="@+id/cart_list"/>
+
 
     <Button
         android:id="@+id/next_process_btn"
@@ -41,10 +44,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/colorAccent"
-        android:text="Next"
+        android:fontFamily="monospace"
+        android:text="@string/next"
         android:textColor="@android:color/white"
-        android:textSize="40dp">
+        android:textSize="18sp">
 
     </Button>
+
+
+
 
 </RelativeLayout>

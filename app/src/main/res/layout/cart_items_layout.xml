@@ -12,14 +12,18 @@
         android:layout_weight="40"
         android:weightSum="40">
 
-        <TextView
+        <EditText
             android:id="@+id/cart_meal_quantity"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_weight="15"
+            android:autoText="false"
+            android:editable="false"
             android:gravity="center"
-            android:text="q"
+            android:hint="Quantity"
+            android:inputType="number"
             android:textAlignment="center"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <TextView
@@ -101,8 +105,12 @@
                 android:layout_below="@+id/textView2"/>
         </LinearLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"/>
 
+    </LinearLayout>
 
 
 </LinearLayout>

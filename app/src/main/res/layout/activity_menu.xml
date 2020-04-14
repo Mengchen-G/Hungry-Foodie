@@ -6,19 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".MenuActivity">
 
-    <TextView
-        android:id="@+id/menuTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="48dp"
-        android:fontFamily="monospace"
-        android:text="@string/restaurants_menu"
-        android:textSize="30sp"
-        android:typeface="monospace"
+    <RelativeLayout
+        android:id="@+id/r111"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="49dp"
+        android:background="@color/colorAccent"
+        app:layout_constraintBottom_toTopOf="@+id/burger_btn"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/total_price2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="30dp"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:text="@string/restaurants_menu"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="30sp" />
+    </RelativeLayout>
 
     <ImageButton
         android:id="@+id/burger_btn"
@@ -26,7 +38,6 @@
         android:layout_height="228dp"
         android:layout_marginStart="41dp"
         android:layout_marginLeft="41dp"
-        android:layout_marginTop="37dp"
         android:layout_marginEnd="41dp"
         android:layout_marginRight="41dp"
         android:layout_marginBottom="354dp"
@@ -34,7 +45,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/menuTextView"
         app:srcCompat="@drawable/burger" />
 
     <ImageButton
