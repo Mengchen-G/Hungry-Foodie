@@ -1,15 +1,15 @@
 package com.example.myapplication.abfactory;
 
 public abstract class Meal {
-    Entree entree;
-    Drink drink;
+    protected Entree entree;
+    protected Drink drink;
 
-    Entree getEntree(){
+    public Entree getEntree(){
         return entree;
     }
 
-    Drink getDrink(){
+    public Drink getDrink(){
         return drink;
     }
-    abstract void prepare();
+    public abstract void prepare();
 }

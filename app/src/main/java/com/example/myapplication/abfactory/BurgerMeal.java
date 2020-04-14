@@ -8,7 +8,7 @@ public class BurgerMeal extends Meal{
         prepare();
     }
 
-    void prepare(){
+    public void prepare(){
         drink = mealFactory.createDrink();
         entree = mealFactory.createEntree();
     }
