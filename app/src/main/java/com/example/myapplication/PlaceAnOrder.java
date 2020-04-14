@@ -38,6 +38,7 @@ public class PlaceAnOrder extends AppCompatActivity {
         //Extract the data
         String order_name = bundle.getString("order_name");
         Meal meal = rest1.createMeal(order_name);
+
         Order order = new Order(meal, 1);
 
 
