@@ -3,8 +3,10 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -25,6 +27,7 @@ public class PlaceAnOrder extends AppCompatActivity {
 
 
     private static final String TAG = "PlaceAnOrder";
+    public ArrayList<Order> orderList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,7 @@ public class PlaceAnOrder extends AppCompatActivity {
 
         Log.d(TAG, "onCreate: Started.");
 
-        ArrayList<Order> orderList = new ArrayList<>();
+//        ArrayList<Order> orderList = new ArrayList<>();
         Restaurant rest1 = new AmericanRestaurant();
 
         //get the bundle
@@ -43,25 +46,34 @@ public class PlaceAnOrder extends AppCompatActivity {
         String order_name = bundle.getString("order_name");
         //use abstract factory pattern to get meal object
         Meal meal = rest1.createMeal(order_name);
-
         Order order = new Order(meal, 1);
         orderList.add(order);
-
+        setOrderList(orderList);
+        System.out.println((orderList));
 
         ListView mListView = (ListView) findViewById(R.id.cart_list);
         OrderListAdapter adapter = new OrderListAdapter(this, R.layout.cart_items_layout, orderList);
         mListView.setAdapter(adapter);
 
-//        NextProcessBtn = (Button) findViewById(R.id.next_process_btn);
-//        txtTotalAmount = (TextView) findViewById(R.id.total_price);
-
-//        EditText quantity = (EditText) findViewById(R.id.cart_meal_quantity);
-//        int quant1 = Integer.parseInt(quantity.getText().toString());
-//        order.setQuantity(quant1);
-//        orderList.add(order);
-//
-
-
+        Button nextBtn1 = (Button) findViewById(R.id.next_process_btn);
+        nextBtn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent startIntent = new Intent(getApplicationContext(), SummaryActivity.class);
+                startActivity(startIntent);
+            }
+        });
+    }
+    public void setOrderList ( ArrayList orderList )
+    {
+        this.orderList = orderList;
     }
 
+
+    public ArrayList getOrderList() {
+        return orderList;
+    }
 }
+
+
+

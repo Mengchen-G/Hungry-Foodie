@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuActivity">
+    tools:context=".DeliverActivity">
 
     <RelativeLayout
         android:id="@+id/topBanner"
@@ -17,46 +17,46 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/menuTextView"
+            android:id="@+id/optionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
             android:fontFamily="monospace"
             android:gravity="center"
-            android:text="@string/restaurants_menu"
+            android:text="@string/delivery_status"
             android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </RelativeLayout>
 
-    <ImageButton
-        android:id="@+id/hotdog_btn"
+    <TextView
+        android:id="@+id/deliveryStatusTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="103dp"
-        android:layout_marginLeft="103dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginRight="104dp"
-        android:layout_marginBottom="36dp"
-        android:contentDescription="@string/Hotdog_Meal"
+        android:text="@string/delivery_status"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/hotdog" />
+        app:layout_constraintTop_toBottomOf="@+id/topBanner"
+        app:layout_constraintVertical_bias="0.832" />
 
-    <ImageButton
-        android:id="@+id/burger_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:layout_marginBottom="35dp"
-        android:contentDescription="@string/Burger_Meal"
-        app:layout_constraintBottom_toTopOf="@+id/hotdog_btn"
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="344dp"
+        android:layout_height="350dp"
+        app:layout_constraintBottom_toTopOf="@+id/deliveryStatusTextView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/r111"
-        app:srcCompat="@drawable/burger" />
+        app:layout_constraintTop_toBottomOf="@+id/topBanner"
+        app:layout_constraintVertical_bias="0.304" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
