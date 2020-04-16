@@ -21,7 +21,7 @@ public class DeliverActivity extends AppCompatActivity {
         Random rand = new Random();
 
         int deliveryTime = rand.nextInt(20)+25;
-        deliveryObserver.updateTakeoutStatus("Food will arrive "+deliveryTime+" minutes.");
+        deliveryObserver.updateDeliveryStatus("Food will arrive "+deliveryTime+" minutes.");
         String message = deliveryObserver.displayDeliveryStatus();
 
         TextView deliveryStatusTextView = (TextView) findViewById(R.id.deliveryStatusTextView);

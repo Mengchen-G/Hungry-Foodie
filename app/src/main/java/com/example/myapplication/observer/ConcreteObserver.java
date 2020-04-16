@@ -8,7 +8,7 @@ import java.util.List;
 public class ConcreteObserver implements Observer {
 
     private String takeoutStatus;
-    private String deliverStatus;
+    private String deliveryStatus;
 
     public void updateTakeoutStatus(String takeoutStatus){
         this.takeoutStatus =  takeoutStatus;
@@ -23,17 +23,17 @@ public class ConcreteObserver implements Observer {
         return takeoutStatus;
     }
 
-    public void updateDeliveryStatus(String deliverStatus){
-        this.deliverStatus =  deliverStatus;
+    public void updateDeliveryStatus(String deliveryStatus){
+        this.deliveryStatus =  deliveryStatus;
         displayDeliveryStatus();
     }
 
     public String displayDeliveryStatus(){
         System.out.println("*************************");
         System.out.println("     Delivery Status     ");
-        System.out.println(deliverStatus);
+        System.out.println(deliveryStatus);
         System.out.println("*************************");
-        return takeoutStatus;
+        return deliveryStatus;
     }
 
 }
