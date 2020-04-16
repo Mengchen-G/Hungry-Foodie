@@ -48,7 +48,7 @@ public class PlaceAnOrder extends AppCompatActivity {
         Meal meal = rest1.createMeal(order_name);
         Order order = new Order(meal, 1);
         orderList.add(order);
-        setOrderList(orderList);
+//        setOrderList(orderList);
         System.out.println((orderList));
 
         ListView mListView = (ListView) findViewById(R.id.cart_list);
@@ -64,15 +64,14 @@ public class PlaceAnOrder extends AppCompatActivity {
             }
         });
     }
-    public void setOrderList ( ArrayList orderList )
-    {
-        this.orderList = orderList;
-    }
-
-
-    public ArrayList getOrderList() {
-        return orderList;
-    }
+//    public void setOrderList ( ArrayList orderList )
+//    {
+//        this.orderList = orderList;
+//    }
+//
+//    public ArrayList getOrderList() {
+//        return orderList;
+//    }
 }
 
 

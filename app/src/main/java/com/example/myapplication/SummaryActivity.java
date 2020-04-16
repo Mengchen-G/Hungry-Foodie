@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.myapplication.abfactory.AmericanRestaurant;
 import com.example.myapplication.abfactory.Meal;
@@ -42,6 +44,18 @@ public class SummaryActivity extends AppCompatActivity {
         OrderSummaryAdapter adapter1 = new OrderSummaryAdapter(this, R.layout.activity_summary, orderSummary);
         mListView2.setAdapter(adapter1);
 
+//        Button updateBtn = (Button) findViewById(R.id.updateBtn);
+//        updateBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                EditText quantityEditText = (EditText) findViewById(R.id.quantityEditText);
+//                TextView costView = (TextView) findViewById(R.id.costTextView);
+//
+//                int quant = Integer.parseInt(quantityEditText.getText().toString());
+//                costView.setText(quant+"");
+//            }
+//        });
+
         Button checkoutBtn = (Button) findViewById(R.id.checkoutBtn);
         checkoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,5 +65,4 @@ public class SummaryActivity extends AppCompatActivity {
             }
         });
     }
-
 }

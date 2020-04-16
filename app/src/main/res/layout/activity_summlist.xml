@@ -33,14 +33,14 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/summaryTextView"
+        android:id="@+id/cartTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="30dp"
         android:fontFamily="monospace"
         android:gravity="center"
-        android:text="Order Summary"
+        android:text="Cart"
         android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="30sp" />
