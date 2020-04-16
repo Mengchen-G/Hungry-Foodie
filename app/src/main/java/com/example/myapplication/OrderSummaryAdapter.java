@@ -18,7 +18,7 @@ import com.example.myapplication.abfactory.Order;
 import java.util.ArrayList;
 
 
-public class OrderListAdapter extends ArrayAdapter<Order> {
+public class OrderSummaryAdapter extends ArrayAdapter<Order> {
     private Context mContext;
     private int mResource;
     private static final String TAG = "OrderListAdapter";
@@ -28,7 +28,7 @@ public class OrderListAdapter extends ArrayAdapter<Order> {
      * @param resource
      * @param objects
      */
-    public OrderListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Order> objects) {
+    public OrderSummaryAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Order> objects) {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;
@@ -41,37 +41,24 @@ public class OrderListAdapter extends ArrayAdapter<Order> {
         //get the information
         Meal meal = getItem(position).getMeal();
         String entreeName = meal.getEntree().getName();
-        String drinkName = meal.getDrink().getName();
         int quantity =  getItem(position).getQuantity();
         double entree_price =  meal.getEntree().getPrice();
         double drink_price =  meal.getDrink().getPrice();
         double price = entree_price + drink_price;
         String sPrice = String.valueOf(price);
-        String sEntreePrice = String.valueOf(entree_price);
-        String sDrinkPrice = String.valueOf(drink_price);
         String sQuantity = String.valueOf(quantity);
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
 
         convertView = inflater.inflate(mResource, null);
 
-//        EditText txtMealQuantity = (EditText) convertView.findViewById(R.id.cart_meal_quantity);
-//        int quant = Integer.parseInt(txtMealQuantity.getText().toString());
         TextView txtMealQuantity = (TextView) convertView.findViewById(R.id.cart_meal_quantity);
         TextView txtMealName = (TextView) convertView.findViewById(R.id.cart_meal_name);
         TextView txtMealPrice = (TextView) convertView.findViewById(R.id.cart_meal_price);
-        TextView txtEntreeName = (TextView) convertView.findViewById(R.id.cart_entree_name);
-        TextView txtEntreePrice = (TextView) convertView.findViewById(R.id.cart_entree_price);
-        TextView txtDrinkName = (TextView) convertView.findViewById(R.id.cart_drink_name);
-        TextView txtDrinkPrice = (TextView) convertView.findViewById(R.id.cart_drink_price);
 
         txtMealQuantity.setText(sQuantity);
         txtMealName.setText(entreeName + " meal");
         txtMealPrice.setText("$" + sPrice);
-        txtEntreeName.setText(entreeName);
-        txtEntreePrice.setText("$" + sEntreePrice);
-        txtDrinkName.setText(drinkName);
-        txtDrinkPrice.setText("$" + sDrinkPrice);
 
         return convertView;
     }

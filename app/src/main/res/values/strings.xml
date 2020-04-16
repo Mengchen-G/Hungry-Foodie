@@ -6,7 +6,9 @@
     <string name="prompt_email">name@example.com</string>
     <string name="prompt_password">Password</string>
     <string name="title_signup">Sign UP</string>
+
     <string name="restaurants_menu">Menu</string>
+    <string name="order_summary">Order Summary</string>
     <string name="restaurants_list">Restaurants List</string>
     <string name="restaurants_pic">Restaurants Picture</string>
     <string name="check_out">Check Out</string>
@@ -17,4 +19,10 @@
     <string name="Burger">Burger</string>
     <string name="Hotdog">Hot Dog</string>
     <string name="Pepsi">Pepsi</string>
+
+    <string name="order_option">Order Option</string>
+    <string name="option_delivery">Deliver</string>
+    <string name="delivery_status">Delivery Status</string>
+    <string name="option_takeout">Take Out</string>
+    <string name="takeout_status">Takeout Status</string>
 </resources>
