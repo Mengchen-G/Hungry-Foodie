@@ -6,12 +6,14 @@
     <string name="prompt_email">name@example.com</string>
     <string name="prompt_password">Password</string>
     <string name="title_signup">Sign UP</string>
+    <string name="update">Update</string>
 
     <string name="restaurants_menu">Menu</string>
     <string name="order_summary">Order Summary</string>
     <string name="restaurants_list">Restaurants List</string>
     <string name="restaurants_pic">Restaurants Picture</string>
     <string name="check_out">Check Out</string>
+    <string name="add_to_cart">Add to Cart</string>
     <string name="Item">Item</string>
     <string name="Price">Price</string>
     <string name="Burger_Meal">Burger Meal</string>

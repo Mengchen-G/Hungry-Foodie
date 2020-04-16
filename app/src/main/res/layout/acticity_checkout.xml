@@ -15,14 +15,14 @@
         android:layout_alignParentTop="true">
 
         <TextView
-            android:id="@+id/total_price"
+            android:id="@+id/infoTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginTop="30dp"
             android:fontFamily="monospace"
             android:gravity="center"
-            android:text="Cart"
+            android:text="Meal Info"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="30sp" />
@@ -45,7 +45,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorAccent"
         android:fontFamily="monospace"
-        android:text="@string/next"
+        android:text="@string/add_to_cart"
         android:textColor="@android:color/white"
         android:textSize="18sp">
 

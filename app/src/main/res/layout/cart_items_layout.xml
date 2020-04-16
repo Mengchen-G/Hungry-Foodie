@@ -12,32 +12,21 @@
         android:layout_weight="40"
         android:weightSum="40">
 
-        <EditText
-            android:id="@+id/cart_meal_quantity"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_weight="15"
-            android:gravity="center"
-            android:hint="Quantity"
-            android:inputType="number"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
         <TextView
             android:id="@+id/cart_meal_name"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:layout_weight="10"
+            android:layout_weight="20"
             android:gravity="center"
             android:text="name"
             android:textAlignment="center"
             android:textStyle="bold" />
+
         <TextView
             android:id="@+id/cart_meal_price"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:layout_weight="15"
+            android:layout_weight="20"
             android:gravity="center"
             android:text="Price"
             android:textAlignment="center"
@@ -54,53 +43,51 @@
         android:layout_weight="60">
 
         <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:weightSum="40">
 
             <TextView
-                android:gravity="center"
-                android:text="name"
+                android:id="@+id/cart_entree_name"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_weight="15"
-                android:id="@+id/cart_entree_name"/>
+                android:gravity="center"
+                android:text="name" />
 
             <TextView
-                android:gravity="center"
-                android:text="@string/Price"
+                android:id="@+id/cart_entree_price"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_weight="25"
-                android:id="@+id/cart_entree_price"/>
+                android:gravity="center"
+                android:text="@string/Price" />
         </LinearLayout>
 
         <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:weightSum="40">
 
             <TextView
-                android:gravity="center"
-                android:text="name"
+                android:id="@+id/cart_drink_name"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_below="@+id/textView2"
                 android:layout_weight="15"
-                android:id="@+id/cart_drink_name"
-                android:layout_below="@+id/textView2"/>
+                android:gravity="center"
+                android:text="name" />
 
             <TextView
-                android:gravity="center"
-                android:text="@string/Price"
+                android:id="@+id/cart_drink_price"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_below="@+id/textView2"
                 android:layout_weight="25"
-                android:id="@+id/cart_drink_price"
-                android:layout_below="@+id/textView2"/>
+                android:gravity="center"
+                android:text="@string/Price" />
         </LinearLayout>
 
         <LinearLayout

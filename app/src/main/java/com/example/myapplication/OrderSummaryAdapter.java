@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -52,13 +53,17 @@ public class OrderSummaryAdapter extends ArrayAdapter<Order> {
 
         convertView = inflater.inflate(mResource, null);
 
-        TextView txtMealQuantity = (TextView) convertView.findViewById(R.id.cart_meal_quantity);
         TextView txtMealName = (TextView) convertView.findViewById(R.id.cart_meal_name);
         TextView txtMealPrice = (TextView) convertView.findViewById(R.id.cart_meal_price);
-
-        txtMealQuantity.setText(sQuantity);
         txtMealName.setText(entreeName + " meal");
         txtMealPrice.setText("$" + sPrice);
+
+        TextView costTextView = (TextView) convertView.findViewById(R.id.costTextView);
+        EditText quantityEditText = (EditText) convertView.findViewById(R.id.quantityEditText);
+//        int quant = Integer.parseInt(quantityEditText.getText().toString());
+//        int totalCost = quant*price
+//        costTextView.setText(totalCost+"");
+        costTextView.setText(quantityEditText.getText());
 
         return convertView;
     }
