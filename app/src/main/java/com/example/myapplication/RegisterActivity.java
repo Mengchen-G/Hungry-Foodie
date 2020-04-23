@@ -16,17 +16,24 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firestore.v1beta1.WriteResult;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "Register Activity";
+    private static final String KEY_NAME = "name";
+    private static final String KEY_EMAIL = "email";
+    private static final String KEY_PASSWORD = "password";
     private EditText editTextName;
     private EditText editTextEmail;
     private EditText editTextPassword;
     FirebaseFirestore db;
-    ArrayList<User> users = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,24 +57,26 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = editTextPassword.getText().toString().trim();
 
                 CollectionReference db_user_info = db.collection("users");
-                User user = new User(name, email, password);
+//                User user = new User(name, email, password);
+                Map<String, Object> user = new HashMap<>();
+                user.put(KEY_NAME, name);
+                user.put(KEY_EMAIL, email);
+                user.put(KEY_PASSWORD, password);
 
+                db_user_info.document(email).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(RegisterActivity.this, "Registered", Toast.LENGTH_LONG).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                        Log.w(TAG, e.toString());
 
-                db_user_info.add(user)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Toast.makeText(RegisterActivity.this, "Registered", Toast.LENGTH_LONG).show();
-                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                                Log.w(TAG, "Error adding document", e);
-                            }
-                        });
+                    }
+                });
+
 
 
                 Intent startIntent = new Intent(getApplicationContext(), LoginActivity.class);
