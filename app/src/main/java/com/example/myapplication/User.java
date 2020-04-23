@@ -8,8 +8,7 @@ import java.util.ArrayList;
 
 public class User implements Parcelable {
     private String name, email, password;
-    private ArrayList<Order> cart;
-    private ArrayList<Order> order_history;
+    private ArrayList cart;
 
 
     public User(String name, String email, String password) {
@@ -18,8 +17,12 @@ public class User implements Parcelable {
         this.password = password;
     }
 
-
-
+    public User(String name, String email, String password, ArrayList<String> cart) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.cart = cart;
+    }
 
 
     public String getName() {
@@ -34,6 +37,15 @@ public class User implements Parcelable {
         return password;
     }
 
+    public ArrayList<String> getCart() {
+        return cart;
+    }
+
+    public void setCart(ArrayList<String> cart) {
+        this.cart = cart;
+    }
+
+
     @Override
     public int describeContents() {
         return 0;
@@ -44,6 +56,8 @@ public class User implements Parcelable {
         dest.writeString(name);
         dest.writeString(email);
         dest.writeString(password);
+        dest.writeList(cart);
+
     }
     public static final Creator<User> CREATOR = new Creator<User>() {
         @Override
@@ -56,11 +70,14 @@ public class User implements Parcelable {
             return new User[size];
         }
     };
+
+
     // Parcelling part
     public User(Parcel in){
         /**Ctor from Parcel, reads back fields IN THE ORDER they were written */
         this.name = in.readString();
         this.email = in.readString();
         this.password = in.readString();
+        this.cart = in.readArrayList(null);
     }
 }

@@ -8,12 +8,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
-
-    private String username;
     private static final String TAG = "Home";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +19,14 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         Bundle data = getIntent().getExtras();
-        User current_client = (User) data.getParcelable("current_client");
+        final User current_client = (User) data.getParcelable("current_client");
         Log.d(TAG, "name: "  + current_client.getName() + " email: " + current_client.getEmail() + " password: " + current_client.getPassword());
 
-//        Intent in = getIntent();
-//        User current_client = (User) in.getParcelableExtra("current_client");
+        String username = "Hi, " + current_client.getName();
+        TextView user_welcome = findViewById(R.id.home_welcome);
+        user_welcome.setText(username);
+        user_welcome.setVisibility(View.VISIBLE);
+
 
         Button restBtn1 = (Button)findViewById(R.id.restBtn1);
         restBtn1.setOnClickListener(new View.OnClickListener() {
@@ -33,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent startIntent = new Intent(getApplicationContext(), MenuActivity.class);
+                startIntent.putExtra("current_client",  current_client);
                 startActivity(startIntent);
             }
         });

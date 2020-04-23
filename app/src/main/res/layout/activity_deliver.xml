@@ -17,11 +17,23 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/delivery_welcome"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentEnd="true"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_alignParentRight="true" />
+
+        <TextView
             android:id="@+id/optionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="35dp"
             android:layout_marginBottom="30dp"
             android:fontFamily="monospace"
             android:gravity="center"

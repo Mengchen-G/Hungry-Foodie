@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.myapplication.abfactory.AmericanRestaurant;
 import com.example.myapplication.abfactory.Meal;
@@ -20,9 +21,6 @@ import java.util.ArrayList;
 
 public class PlaceAnOrder extends AppCompatActivity {
 
-//    private Button NextProcessBtn;
-//    private TextView txtTotalAmount;
-
 
     private static final String TAG = "PlaceAnOrder";
     public ArrayList<Order> orderList = new ArrayList<>();
@@ -33,6 +31,15 @@ public class PlaceAnOrder extends AppCompatActivity {
         setContentView(R.layout.acticity_checkout);
 
         Log.d(TAG, "onCreate: Started.");
+
+        Bundle data = getIntent().getExtras();
+        final User current_client = (User) data.getParcelable("current_client");
+        Log.d(TAG, "name: "  + current_client.getName() + " email: " + current_client.getEmail() + " password: " + current_client.getPassword());
+
+        String username = "Hi, " + current_client.getName();
+        TextView user_welcome = findViewById(R.id.checkout_welcome);
+        user_welcome.setText(username);
+        user_welcome.setVisibility(View.VISIBLE);
 
 //        ArrayList<Order> orderList = new ArrayList<>();
         Restaurant rest1 = new AmericanRestaurant();
