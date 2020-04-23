@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,20 +13,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
+import android.os.Bundle;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.io.Serializable;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "Login";
@@ -52,15 +48,18 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final String login_email = editTextEmail.getText().toString().trim();
                 final String login_password = editTextPassword.getText().toString().trim();
-
+                //extract data from database
                 users_ref.document(login_email).get()
                         .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                             @Override
                             public void onSuccess(DocumentSnapshot documentSnapshot) {
                                 if(documentSnapshot.exists()){
+                                    //check password
                                     if(documentSnapshot.getString("password").equals(login_password)) {
-                                                Intent startIntent = new Intent(getApplicationContext(), HomeActivity.class);
-                                                startActivity(startIntent);
+                                        User user = new User(documentSnapshot.getString("name"), documentSnapshot.getString("email"), documentSnapshot.getString("password"));
+                                        Intent startIntent = new Intent(getApplicationContext(), HomeActivity.class);
+                                        startIntent.putExtra("current_client",  user);
+                                        startActivity(startIntent);
                                     }else{
                                         Toast.makeText(LoginActivity.this, "Wrong password", Toast.LENGTH_LONG).show();
                                         textResponse.setText("Wrong password!");
