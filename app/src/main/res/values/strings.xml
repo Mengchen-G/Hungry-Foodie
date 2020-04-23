@@ -27,4 +27,8 @@
     <string name="delivery_status">Delivery Status</string>
     <string name="option_takeout">Take Out</string>
     <string name="takeout_status">Takeout Status</string>
+    <string name="register_now">Register now</string>
+    <string name="email">Email</string>
+    <string name="user_name">User name</string>
+    <string name="register">Register</string>
 </resources>

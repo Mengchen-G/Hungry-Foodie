@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustPan">
-        <activity android:name=".TakeoutActivity"></activity>
+        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".TakeoutActivity" />
         <activity android:name=".OptionActivity" />
         <activity android:name=".SummaryActivity" />
         <activity android:name=".DeliverActivity" />
