@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -132,15 +133,8 @@ public class PlaceAnOrder extends AppCompatActivity {
         nextBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                users_ref.document(current_client.getEmail()).update("cart", cart_info);
+//                users_ref.document(current_client.getEmail()).update("cart", cart_info);
                 //send order to the restaurant
-                String pattern = "MM-dd-yyyy HH:mm:ss";
-                Date currentTime = Calendar.getInstance().getTime();
-                // Create an instance of SimpleDateFormat used for formatting
-                // the string representation of date according to the chosen pattern
-                DateFormat df = new SimpleDateFormat(pattern);
-                String todayAsString = df.format(currentTime);
-
                 CollectionReference db_a_restaurant = db.collection("AmericanRestaurant");
                 Map<String, Map<String, Object> >  order_info = new HashMap<>();
                 Map<String, Object> order = new HashMap<>();
@@ -154,29 +148,33 @@ public class PlaceAnOrder extends AppCompatActivity {
 
                 order.put("Customer Email", email);
                 order.put("Orders", order_info);
-                order.put("Time", todayAsString);
 
-                db_a_restaurant.document(todayAsString).set(order).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(PlaceAnOrder.this, "order saved", Toast.LENGTH_LONG).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(PlaceAnOrder.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                        Log.w(TAG, e.toString());
+                Bundle extras = new Bundle();
+                extras.putSerializable("HashMap", (Serializable) order);
 
-                    }
-                });
-
-                //delete items in the cart
-                users_ref.document(email).update("cart", null);
-
+//                //save data in the restaurant collection
+//                db_a_restaurant.document(todayAsString).set(order).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                        Toast.makeText(PlaceAnOrder.this, "order saved", Toast.LENGTH_LONG).show();
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Toast.makeText(PlaceAnOrder.this, e.getMessage(), Toast.LENGTH_LONG).show();
+//                        Log.w(TAG, e.toString());
+//
+//                    }
+//                });
+//
+//                //delete items in the cart
+//                users_ref.document(email).update("cart", null);
 
 
                 Intent startIntent = new Intent(getApplicationContext(), OptionActivity.class);
                 startIntent.putExtra("current_client",  current_client);
+                startIntent.putExtras(extras);
+                startIntent.putExtra("Restaurant", "AmericanRestaurant");
                 startActivity(startIntent);
             }
         });
