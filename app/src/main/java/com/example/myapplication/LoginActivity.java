@@ -19,16 +19,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import android.os.Bundle;
-
-import java.io.Serializable;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "Login";
     private EditText editTextEmail;
     private EditText editTextPassword;
     private TextView textResponse;
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference users_ref = db.collection("users");
 
     @Override
@@ -56,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                                 if(documentSnapshot.exists()){
                                     //check password
                                     if(documentSnapshot.getString("password").equals(login_password)) {
+                                        Log.d(TAG, documentSnapshot.getString("name") + documentSnapshot.getString("email") + documentSnapshot.getString("password"));
                                         User user = new User(documentSnapshot.getString("name"), documentSnapshot.getString("email"), documentSnapshot.getString("password"));
                                         Intent startIntent = new Intent(getApplicationContext(), HomeActivity.class);
                                         startIntent.putExtra("current_client",  user);
@@ -85,5 +83,6 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
     }
 }

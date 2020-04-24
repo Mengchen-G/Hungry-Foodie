@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
     private static final String KEY_NAME = "name";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_PASSWORD = "password";
+    private static final String KEY_CART = "cart";
     private EditText editTextName;
     private EditText editTextEmail;
     private EditText editTextPassword;
@@ -52,11 +54,13 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = editTextPassword.getText().toString().trim();
 
                 CollectionReference db_user_info = db.collection("users");
-//                User user = new User(name, email, password);
+
                 Map<String, Object> user = new HashMap<>();
                 user.put(KEY_NAME, name);
                 user.put(KEY_EMAIL, email);
                 user.put(KEY_PASSWORD, password);
+                user.put(KEY_CART, null);
+
 
                 db_user_info.document(email).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -79,4 +83,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

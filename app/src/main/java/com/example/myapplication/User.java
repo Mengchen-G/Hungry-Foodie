@@ -3,25 +3,17 @@ package com.example.myapplication;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.example.myapplication.abfactory.Order;
-import java.util.ArrayList;
+import java.util.Map;
 
 public class User implements Parcelable {
     private String name, email, password;
-    private ArrayList cart;
+//    private Map<String, Object> cart;
 
 
     public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
-    }
-
-    public User(String name, String email, String password, ArrayList<String> cart) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.cart = cart;
     }
 
 
@@ -37,14 +29,6 @@ public class User implements Parcelable {
         return password;
     }
 
-    public ArrayList<String> getCart() {
-        return cart;
-    }
-
-    public void setCart(ArrayList<String> cart) {
-        this.cart = cart;
-    }
-
 
     @Override
     public int describeContents() {
@@ -56,7 +40,8 @@ public class User implements Parcelable {
         dest.writeString(name);
         dest.writeString(email);
         dest.writeString(password);
-        dest.writeList(cart);
+//        dest.writeSerializable((Serializable) cart);
+//        dest.writeList(cart);
 
     }
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -78,6 +63,8 @@ public class User implements Parcelable {
         this.name = in.readString();
         this.email = in.readString();
         this.password = in.readString();
-        this.cart = in.readArrayList(null);
+//        this.cart = (Map<String, Object>) in.readSerializable();
+//        this.cart = in.readArrayList(null);
+
     }
 }

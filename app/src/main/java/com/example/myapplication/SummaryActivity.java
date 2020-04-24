@@ -20,7 +20,6 @@ import java.util.ArrayList;
 public class SummaryActivity extends AppCompatActivity {
 
     private static final String TAG = "OrderSummary";
-//    PlaceAnOrder placedOrder = new PlaceAnOrder();
     public ArrayList<Order> orderSummary = new ArrayList<>();
 
 
@@ -29,7 +28,6 @@ public class SummaryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summlist);
 
-//        ArrayList<Order> orderSummary = new ArrayList<>();
 //        orderSummary = placedOrder.getOrderList();
         Restaurant rest1 = new AmericanRestaurant();
 
@@ -56,7 +54,8 @@ public class SummaryActivity extends AppCompatActivity {
 //            }
 //        });
 
-        Button checkoutBtn = (Button) findViewById(R.id.checkoutBtn);
+
+        Button checkoutBtn = (Button) findViewById(R.id.next_process_btn);
         checkoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

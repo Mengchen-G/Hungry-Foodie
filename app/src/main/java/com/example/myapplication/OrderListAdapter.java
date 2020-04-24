@@ -40,14 +40,16 @@ public class OrderListAdapter extends ArrayAdapter<Order> {
         Log.d(TAG, "getView: Started.");
         //get the information
         Meal meal = getItem(position).getMeal();
+        int quantity = getItem(position).getQuantity();
         String entreeName = meal.getEntree().getName();
         String drinkName = meal.getDrink().getName();
         double entree_price =  meal.getEntree().getPrice();
         double drink_price =  meal.getDrink().getPrice();
-        double price = entree_price + drink_price;
+        double price = entree_price * quantity + drink_price * quantity;
         String sPrice = String.valueOf(price);
         String sEntreePrice = String.valueOf(entree_price);
         String sDrinkPrice = String.valueOf(drink_price);
+        String sQuantity = String.valueOf(quantity);
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
 
@@ -67,9 +69,9 @@ public class OrderListAdapter extends ArrayAdapter<Order> {
         txtMealName.setText(entreeName + " meal");
         txtMealPrice.setText("$" + sPrice);
         txtEntreeName.setText(entreeName);
-        txtEntreePrice.setText("$" + sEntreePrice);
+        txtEntreePrice.setText("$" + sEntreePrice + " x " + sQuantity);
         txtDrinkName.setText(drinkName);
-        txtDrinkPrice.setText("$" + sDrinkPrice);
+        txtDrinkPrice.setText("$" + sDrinkPrice + " x " + sQuantity);
 
         return convertView;
     }

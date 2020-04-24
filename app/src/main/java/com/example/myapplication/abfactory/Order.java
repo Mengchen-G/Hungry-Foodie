@@ -3,12 +3,23 @@ package com.example.myapplication.abfactory;
 public class Order {
     private Meal meal;
     private int quantity;
+    private double price;
+
+
 
     public Order(Meal meal, int quantity) {
         this.meal = meal;
         this.quantity = quantity;
     }
 
+    public double calPrice(){
+        return meal.getEntree().getPrice() * quantity + meal.getDrink().getPrice() * quantity;
+    }
+
+    public double getPrice() {
+        this.price = calPrice();
+        return price;
+    }
     public void setMeal(Meal meal) {
         this.meal = meal;
     }

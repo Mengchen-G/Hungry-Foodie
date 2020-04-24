@@ -54,6 +54,7 @@ public class MenuActivity extends AppCompatActivity {
                 String order_name = "Hotdog";
                 bundle.putString("order_name", order_name);
                 startIntent.putExtras(bundle);
+                startIntent.putExtra("current_client",  current_client);
                 startActivity(startIntent);
             }
         });
