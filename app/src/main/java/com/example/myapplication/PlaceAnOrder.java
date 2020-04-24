@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -14,6 +15,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import com.example.myapplication.abfactory.AmericanRestaurant;
 import com.example.myapplication.abfactory.Meal;
 import com.example.myapplication.abfactory.Order;
@@ -21,7 +26,6 @@ import com.example.myapplication.abfactory.Restaurant;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -29,10 +33,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
 
 
 public class PlaceAnOrder extends AppCompatActivity {
@@ -129,6 +133,48 @@ public class PlaceAnOrder extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 users_ref.document(current_client.getEmail()).update("cart", cart_info);
+                //send order to the restaurant
+                String pattern = "MM-dd-yyyy HH:mm:ss";
+                Date currentTime = Calendar.getInstance().getTime();
+                // Create an instance of SimpleDateFormat used for formatting
+                // the string representation of date according to the chosen pattern
+                DateFormat df = new SimpleDateFormat(pattern);
+                String todayAsString = df.format(currentTime);
+
+                CollectionReference db_a_restaurant = db.collection("AmericanRestaurant");
+                Map<String, Map<String, Object> >  order_info = new HashMap<>();
+                Map<String, Object> order = new HashMap<>();
+                for(int i = 0; i < cart_info.size(); i++){
+                    Map<String, Object> meal_info = new HashMap<>();
+                    meal_info.put("Item name", cart_info.get(String.valueOf(i)).get("Item name"));
+                    meal_info.put("Quantity", cart_info.get(String.valueOf(i)).get("Quantity"));
+                    meal_info.put("Price", cart_info.get(String.valueOf(i)).get("Price"));
+                    order_info.put(String.valueOf(i), meal_info);
+                }
+
+                order.put("Customer Email", email);
+                order.put("Orders", order_info);
+                order.put("Time", todayAsString);
+
+                db_a_restaurant.document(todayAsString).set(order).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(PlaceAnOrder.this, "order saved", Toast.LENGTH_LONG).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(PlaceAnOrder.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                        Log.w(TAG, e.toString());
+
+                    }
+                });
+
+                //delete items in the cart
+                users_ref.document(email).update("cart", null);
+
+
+
                 Intent startIntent = new Intent(getApplicationContext(), OptionActivity.class);
                 startIntent.putExtra("current_client",  current_client);
                 startActivity(startIntent);
