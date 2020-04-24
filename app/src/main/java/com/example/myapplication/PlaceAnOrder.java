@@ -41,6 +41,7 @@ public class PlaceAnOrder extends AppCompatActivity {
     private static final String TAG = "PlaceAnOrder";
     private ArrayList<Order> orderList = new ArrayList<>();
     private Map<String, Map<String, Object>> cart_info = new HashMap<>();
+    private String email;
 
 
     @Override
@@ -56,7 +57,7 @@ public class PlaceAnOrder extends AppCompatActivity {
 
         assert current_client != null;
         String username = "Hi, " + current_client.getName();
-        String email = current_client.getEmail();
+        email = current_client.getEmail();
         String password = current_client.getPassword();
         TextView user_welcome = findViewById(R.id.checkout_welcome);
         user_welcome.setText(username);
@@ -161,10 +162,12 @@ public class PlaceAnOrder extends AppCompatActivity {
             for (QueryDocumentSnapshot document : task.getResult()) {
                 Log.d(TAG, document.getId() + " => " + document.getData());
                 Log.d(TAG, String.valueOf(document.getData().get("cart")));
-                if (document.getData().get("cart") == null){
-                    return new HashMap<>();
+                if (document.getId().equals(email)) {
+                    if (document.getData().get("cart") == null) {
+                        return new HashMap<>();
+                    }
+                    return (Map<String, Map<String, Object>>) document.getData().get("cart");
                 }
-                return (Map<String, Map<String, Object>>) document.getData().get("cart");
             }
         } else {
             Log.w(TAG, "Error getting documents.", task.getException());
