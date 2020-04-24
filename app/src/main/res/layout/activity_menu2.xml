@@ -1,22 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MenuActivity">
+
+<RelativeLayout
+    android:id="@+id/topBanner"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Menu2Activity">
+    android:layout_height="100dp"
+    android:layout_alignParentTop="true"
+    android:background="@color/colorAccent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
     <TextView
-        android:id="@+id/menuTextView2"
+        android:id="@+id/menu_welcome"
+        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentEnd="true"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:id="@+id/menuTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
         android:fontFamily="monospace"
+        android:gravity="center"
         android:text="@string/restaurants_menu"
-        android:textSize="30sp"
-        android:typeface="monospace"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
+</RelativeLayout>
+
+
+    <ImageButton
+        android:id="@+id/chips_btn"
+        android:layout_width="248dp"
+        android:layout_height="249dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="103dp"
+        android:layout_marginLeft="103dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginRight="104dp"
+        android:layout_marginBottom="72dp"
+        android:contentDescription="Chips_Meal"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:srcCompat="@drawable/chips" />
+
+    <ImageButton
+        android:id="@+id/tacos_btn"
+        android:layout_width="283dp"
+        android:layout_height="198dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="68dp"
+        android:contentDescription="Tacos Meal"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/chips_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/r111"
+        app:srcCompat="@drawable/taco" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

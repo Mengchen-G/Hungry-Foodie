@@ -37,6 +37,7 @@ public class MenuActivity extends AppCompatActivity {
                 //Add your data to bundle
                 String order_name = "Burger";
                 bundle.putString("order_name", order_name);
+                bundle.putString("Restaurant", "AmericanRestaurant");
                 //Add the bundle to the intent
                 startIntent.putExtras(bundle);
                 startIntent.putExtra("current_client",  current_client);
@@ -53,6 +54,7 @@ public class MenuActivity extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 String order_name = "Hotdog";
                 bundle.putString("order_name", order_name);
+                bundle.putString("Restaurant", "AmericanRestaurant");
                 startIntent.putExtras(bundle);
                 startIntent.putExtra("current_client",  current_client);
                 startActivity(startIntent);

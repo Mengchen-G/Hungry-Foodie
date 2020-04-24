@@ -16,6 +16,7 @@ import java.io.Serializable;
 
 import com.example.myapplication.abfactory.AmericanRestaurant;
 import com.example.myapplication.abfactory.Meal;
+import com.example.myapplication.abfactory.MexicanRestaurant;
 import com.example.myapplication.abfactory.Order;
 import com.example.myapplication.abfactory.Restaurant;
 import com.google.android.gms.tasks.Task;
@@ -38,6 +39,7 @@ public class PlaceAnOrder extends AppCompatActivity {
     private ArrayList<Order> orderList = new ArrayList<>();
     private Map<String, Map<String, Object>> cart_info = new HashMap<>();
     private String email;
+    private Restaurant rest1;
 
 
     @Override
@@ -59,14 +61,19 @@ public class PlaceAnOrder extends AppCompatActivity {
         user_welcome.setText(username);
         user_welcome.setVisibility(View.VISIBLE);
 
-        Restaurant rest1 = new AmericanRestaurant();
-
         //get the bundle
         Bundle bundle = getIntent().getExtras();
 
         //Extract the data
         String order_name = bundle.getString("order_name");
+        final String restaurant = bundle.getString("Restaurant");
+
         //use abstract factory pattern to get meal object
+        if(restaurant.equals("AmericanRestaurant")){
+            rest1 = new AmericanRestaurant();
+        }else if(restaurant.equals("MexicanRestaurant")) {
+            rest1 = new MexicanRestaurant();
+        }
         Meal meal = rest1.createMeal(order_name);
         Order order = new Order(meal, 1);
 
@@ -112,7 +119,13 @@ public class PlaceAnOrder extends AppCompatActivity {
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent startIntent = new Intent(getApplicationContext(), MenuActivity.class);
+                Intent startIntent = null;
+                if(restaurant.equals("AmericanRestaurant")){
+                    startIntent = new Intent(getApplicationContext(), MenuActivity.class);
+                }else if(restaurant.equals("MexicanRestaurant")) {
+                    startIntent = new Intent(getApplicationContext(), Menu2Activity.class);
+                }
+
                 startIntent.putExtra("current_client",  current_client);
                 startActivity(startIntent);
             }
@@ -125,7 +138,7 @@ public class PlaceAnOrder extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //send order to the restaurant
-                CollectionReference db_a_restaurant = db.collection("AmericanRestaurant");
+                CollectionReference db_a_restaurant = db.collection(restaurant);
                 Map<String, Map<String, Object> >  order_info = new HashMap<>();
                 Map<String, Object> order = new HashMap<>();
                 for(int i = 0; i < cart_info.size(); i++){
@@ -145,7 +158,7 @@ public class PlaceAnOrder extends AppCompatActivity {
                 Intent startIntent = new Intent(getApplicationContext(), OptionActivity.class);
                 startIntent.putExtra("current_client",  current_client);
                 startIntent.putExtras(extras);
-                startIntent.putExtra("Restaurant", "AmericanRestaurant");
+                startIntent.putExtra("Restaurant", restaurant);
                 startActivity(startIntent);
             }
         });

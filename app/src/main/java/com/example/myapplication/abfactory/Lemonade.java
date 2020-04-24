@@ -1,8 +1,8 @@
 package com.example.myapplication.abfactory;
 
-public class Water extends Drink{
-    String name = "Water";
-    Double price = 0.0;
+public class Lemonade extends Drink{
+    String name = "Lemonade";
+    Double price = 2.0;
 
     public String getName(){
         return name;

@@ -45,6 +45,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent startIntent = new Intent(getApplicationContext(), Menu2Activity.class);
+                startIntent.putExtra("current_client",  current_client);
                 startActivity(startIntent);
             }
         });
