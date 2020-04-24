@@ -151,26 +151,7 @@ public class PlaceAnOrder extends AppCompatActivity {
 
                 Bundle extras = new Bundle();
                 extras.putSerializable("HashMap", (Serializable) order);
-
-//                //save data in the restaurant collection
-//                db_a_restaurant.document(todayAsString).set(order).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                        Toast.makeText(PlaceAnOrder.this, "order saved", Toast.LENGTH_LONG).show();
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(PlaceAnOrder.this, e.getMessage(), Toast.LENGTH_LONG).show();
-//                        Log.w(TAG, e.toString());
-//
-//                    }
-//                });
-//
-//                //delete items in the cart
-//                users_ref.document(email).update("cart", null);
-
-
+                
                 Intent startIntent = new Intent(getApplicationContext(), OptionActivity.class);
                 startIntent.putExtra("current_client",  current_client);
                 startIntent.putExtras(extras);
