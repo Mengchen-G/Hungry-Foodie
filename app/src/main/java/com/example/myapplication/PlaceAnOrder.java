@@ -1,7 +1,5 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -12,20 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import com.example.myapplication.abfactory.AmericanRestaurant;
 import com.example.myapplication.abfactory.Meal;
 import com.example.myapplication.abfactory.Order;
 import com.example.myapplication.abfactory.Restaurant;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -34,7 +26,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -133,7 +124,6 @@ public class PlaceAnOrder extends AppCompatActivity {
         nextBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                users_ref.document(current_client.getEmail()).update("cart", cart_info);
                 //send order to the restaurant
                 CollectionReference db_a_restaurant = db.collection("AmericanRestaurant");
                 Map<String, Map<String, Object> >  order_info = new HashMap<>();
@@ -151,7 +141,7 @@ public class PlaceAnOrder extends AppCompatActivity {
 
                 Bundle extras = new Bundle();
                 extras.putSerializable("HashMap", (Serializable) order);
-                
+
                 Intent startIntent = new Intent(getApplicationContext(), OptionActivity.class);
                 startIntent.putExtra("current_client",  current_client);
                 startIntent.putExtras(extras);
