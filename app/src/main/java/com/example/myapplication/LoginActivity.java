@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +37,25 @@ public class LoginActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.login_password);
         textResponse = findViewById(R.id.response);
 
+        Button mLogBtn = (Button)findViewById(R.id.mLogBtn);
+        mLogBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent startIntent = new Intent(getApplicationContext(), MerchantLoginActivity.class);
+                startActivity(startIntent);
+            }
+        });
+
+        Button dLogBtn = (Button)findViewById(R.id.dLogBtn);
+        dLogBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent startIntent = new Intent(getApplicationContext(), DeliveryLoginActivity.class);
+                startActivity(startIntent);
+            }
+        });
 
         Button nextBtn = (Button)findViewById(R.id.nextBtn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
@@ -55,10 +74,23 @@ public class LoginActivity extends AppCompatActivity {
                                     if(documentSnapshot.getString("password").equals(login_password)) {
                                         Log.d(TAG, documentSnapshot.getString("name") + documentSnapshot.getString("email") + documentSnapshot.getString("password"));
                                         User user = new User(documentSnapshot.getString("name"), documentSnapshot.getString("email"), documentSnapshot.getString("password"));
-                                        Intent startIntent = new Intent(getApplicationContext(), HomeActivity.class);
-                                        startIntent.putExtra("current_client",  user);
-                                        startActivity(startIntent);
-                                    }else{
+                                        if(documentSnapshot.getString("type") == "DeliveryMan") {
+                                            Intent startIntent = new Intent(getApplicationContext(), DeliveryLoginActivity.class);
+                                            startIntent.putExtra("current_client", user);
+                                            startActivity(startIntent);
+                                        }
+                                        else if(documentSnapshot.getString("type") == "Merchant") {
+                                            Intent startIntent = new Intent(getApplicationContext(), MerchantMenuActivity.class);
+                                            startIntent.putExtra("current_client", user);
+                                            startActivity(startIntent);
+                                        }
+                                        else {
+                                            Intent startIntent = new Intent(getApplicationContext(), HomeActivity.class);
+                                            startIntent.putExtra("current_client", user);
+                                            startActivity(startIntent);
+                                        }
+                                    }
+                                    else{
                                         Toast.makeText(LoginActivity.this, "Wrong password", Toast.LENGTH_LONG).show();
                                         textResponse.setText("Wrong password!");
                                         textResponse.setVisibility(View.VISIBLE);
@@ -85,4 +117,5 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+
 }

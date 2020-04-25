@@ -3,11 +3,18 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
+import android.widget.Spinner;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -26,10 +33,12 @@ public class RegisterActivity extends AppCompatActivity {
     private static final String KEY_NAME = "name";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_PASSWORD = "password";
+    private static final String KEY_TYPE = "type";
     private static final String KEY_CART = "cart";
     private EditText editTextName;
     private EditText editTextEmail;
     private EditText editTextPassword;
+    private Spinner spinnerType;
     FirebaseFirestore db;
 
     @Override
@@ -41,8 +50,12 @@ public class RegisterActivity extends AppCompatActivity {
         editTextEmail = findViewById(R.id.register_email);
         editTextName = findViewById(R.id.register_name);
         editTextPassword = findViewById(R.id.register_password);
+        spinnerType = findViewById(R.id.typeSpinner);
 
-
+        Spinner typeSpinner = (Spinner) findViewById(R.id.typeSpinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.type_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        typeSpinner.setAdapter(adapter);
 
         Button registerBtn = (Button)findViewById(R.id.register_btn);
         registerBtn.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String name = editTextName.getText().toString().trim();
                 String email = editTextEmail.getText().toString().trim();
                 String password = editTextPassword.getText().toString().trim();
+                String type = spinnerType.getSelectedItem().toString().trim();
 
                 CollectionReference db_user_info = db.collection("users");
 
@@ -59,6 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
                 user.put(KEY_NAME, name);
                 user.put(KEY_EMAIL, email);
                 user.put(KEY_PASSWORD, password);
+                user.put(KEY_TYPE, type);
                 user.put(KEY_CART, null);
 
 
@@ -76,13 +91,20 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
 
-
-
                 Intent startIntent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(startIntent);
             }
         });
     }
+    public class SpinnerActivity extends Activity implements OnItemSelectedListener {
 
+        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+            parent.getItemAtPosition(pos);
+        }
 
+        public void onNothingSelected(AdapterView<?> parent) {
+            // Another interface callback
+            System.out.println("Default type: Customer");
+        }
+    }
 }

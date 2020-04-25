@@ -5,8 +5,11 @@
     <string name="title_login">LOG IN</string>
     <string name="prompt_email">name@example.com</string>
     <string name="prompt_password">Password</string>
-    <string name="title_signup">Sign UP</string>
+    <string name="merchant_login">MERCHANT LOG IN</string>
+    <string name="delivery_login">DELIVERY LOG IN</string>
     <string name="update">Update</string>
+    <string name="m_login">Login as Merchant</string>
+    <string name="d_login">Login as Deliveryman</string>
 
     <string name="restaurants_menu">Menu</string>
     <string name="order_summary">Order Summary</string>
@@ -31,4 +34,12 @@
     <string name="email">Email</string>
     <string name="user_name">User name</string>
     <string name="register">Register</string>
+    <string name="edit_menu">Edit Menu</string>
+
+    <string name="choose_type">Choose User Type</string>
+    <string-array name="type_array">
+        <item>Customer</item>
+        <item>Merchant</item>
+        <item>DeliveryMan</item>
+    </string-array>
 </resources>
