@@ -101,4 +101,10 @@ public class OptionActivity extends AppCompatActivity {
         users_ref.document(current_client.getEmail()).update("cart", null);
 
     }
+
+
+
+
+
+
 }

@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustPan">
-        <activity android:name=".DeliveryLoginActivity"></activity>
+        <activity android:name=".ReviewActivity"></activity>
+        <activity android:name=".DeliveryLoginActivity" />
         <activity android:name=".MerchantLoginActivity" />
         <activity android:name=".MerchantMenuActivity" />
         <activity android:name=".RegisterActivity" />

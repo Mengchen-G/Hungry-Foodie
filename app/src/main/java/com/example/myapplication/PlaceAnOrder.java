@@ -155,7 +155,7 @@ public class PlaceAnOrder extends AppCompatActivity {
                 Bundle extras = new Bundle();
                 extras.putSerializable("HashMap", (Serializable) order);
 
-                Intent startIntent = new Intent(getApplicationContext(), OptionActivity.class);
+                Intent startIntent = new Intent(getApplicationContext(), ReviewActivity.class);
                 startIntent.putExtra("current_client",  current_client);
                 startIntent.putExtras(extras);
                 startIntent.putExtra("Restaurant", restaurant);
