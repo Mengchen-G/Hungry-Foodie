@@ -87,7 +87,7 @@ public class PlaceAnOrder extends AppCompatActivity {
         //add cart items to database
         cart_info = updateDatabase(order, current_client, users_ref, cart_info);
 
-        // using for loop for iteration over Map.entrySet()
+        // get displayed array
         for(int i = 0; i< cart_info.size(); i++){
             String Meal_name = String.valueOf(((Map<String, Object>) cart_info.get(String.valueOf(i))).get("Item name"));
             if (orderList.size()==0){
