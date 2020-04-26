@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -50,12 +51,18 @@ public class OptionActivity extends AppCompatActivity {
 
         final CollectionReference db_a_restaurant = db.collection(restaurant);
 
+        final Bundle extras = new Bundle();
+        extras.putSerializable("HashMap", (Serializable) order);
+
         Button deliverBtn = (Button) findViewById(R.id.optionDBtn);
         deliverBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendOrder(current_client, db_a_restaurant, "Delivery");
-                Intent startIntent = new Intent(getApplicationContext(), DeliverActivity.class);
+                Intent startIntent = new Intent(getApplicationContext(), ReviewActivity.class);
+                startIntent.putExtra("current_client",  current_client);
+                startIntent.putExtras(extras);
+                startIntent.putExtra("Restaurant", restaurant);
+                startIntent.putExtra("Option", "Delivery");
                 startActivity(startIntent);
             }
         });
@@ -64,43 +71,38 @@ public class OptionActivity extends AppCompatActivity {
         takeoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendOrder(current_client, db_a_restaurant, "Take out");
-                Intent startIntent = new Intent(getApplicationContext(), TakeoutActivity.class);
+                Intent startIntent = new Intent(getApplicationContext(), ReviewActivity.class);
+                startIntent.putExtra("current_client",  current_client);
+                startIntent.putExtras(extras);
+                startIntent.putExtra("Restaurant", restaurant);
+                startIntent.putExtra("Option", "TakeOut");
                 startActivity(startIntent);
             }
         });
+
+
+//        Button deliverBtn = (Button) findViewById(R.id.optionDBtn);
+//        deliverBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                sendOrder(current_client, db_a_restaurant, "Delivery");
+//                Intent startIntent = new Intent(getApplicationContext(), DeliverActivity.class);
+//                startActivity(startIntent);
+//            }
+//        });
+//
+//        Button takeoutBtn = (Button) findViewById(R.id.optionTBtn);
+//        takeoutBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                sendOrder(current_client, db_a_restaurant, "Take out");
+//                Intent startIntent = new Intent(getApplicationContext(), TakeoutActivity.class);
+//                startActivity(startIntent);
+//            }
+//        });
     }
 
-    public void sendOrder(User current_client, CollectionReference db_a_restaurant, String order_option) {
-        String pattern = "MM-dd-yyyy HH:mm:ss";
-        Date currentTime = Calendar.getInstance().getTime();
-        // Create an instance of SimpleDateFormat used for formatting
-        // the string representation of date according to the chosen pattern
-        DateFormat df = new SimpleDateFormat(pattern);
-        String todayAsString = df.format(currentTime);
 
-        order.put("Time", todayAsString);
-        order.put("Option", order_option);
-
-        //save data in the restaurant collection
-        db_a_restaurant.document(todayAsString).set(order).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Toast.makeText(OptionActivity.this, "order saved", Toast.LENGTH_LONG).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(OptionActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                Log.w(TAG, e.toString());
-
-            }
-        });
-
-        //delete items in the cart
-        users_ref.document(current_client.getEmail()).update("cart", null);
-
-    }
 
 
 

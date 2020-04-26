@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.app.VoiceInteractor;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -155,7 +156,7 @@ public class PlaceAnOrder extends AppCompatActivity {
                 Bundle extras = new Bundle();
                 extras.putSerializable("HashMap", (Serializable) order);
 
-                Intent startIntent = new Intent(getApplicationContext(), ReviewActivity.class);
+                Intent startIntent = new Intent(getApplicationContext(), OptionActivity.class);
                 startIntent.putExtra("current_client",  current_client);
                 startIntent.putExtras(extras);
                 startIntent.putExtra("Restaurant", restaurant);

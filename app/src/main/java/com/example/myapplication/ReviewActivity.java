@@ -6,6 +6,7 @@ import com.example.myapplication.abfactory.Order;
 import com.example.myapplication.abfactory.Restaurant;
 import com.example.myapplication.strategy.*;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,12 +16,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,6 +44,7 @@ public class ReviewActivity extends AppCompatActivity {
     private Restaurant rest1;
     private VIPBehavior vipBehavior = new VIPBehavior();
     private NonVIPBehavior nonVIPBehavior = new NonVIPBehavior();
+    private String option;
     Client n_client;
 
     @Override
@@ -54,7 +63,8 @@ public class ReviewActivity extends AppCompatActivity {
 
         //get HashMap
         order = (Map<String, Object>) data.getSerializable("HashMap");
-
+        //get option
+        option = data.getString("Option");
         //get restaurant info
         final String restaurant = data.getString("Restaurant");
 
@@ -97,7 +107,7 @@ public class ReviewActivity extends AppCompatActivity {
             total_cost += orderList.get(i).getMeal().getDrink().getPrice() * orderList.get(i).getQuantity();
         }
         //add shipping fee
-        if (current_client.getType() == "VIPCustomer" ){
+        if (current_client.getType().equals("VIPCustomer") ){
             n_client = new Client(current_client.getEmail(), current_client.getName(), vipBehavior);
         }else{
             n_client = new Client(current_client.getEmail(), current_client.getName(), nonVIPBehavior);
@@ -114,25 +124,56 @@ public class ReviewActivity extends AppCompatActivity {
         OrderListAdapter adapter = new OrderListAdapter(this, R.layout.cart_items_layout, orderList);
         mListView.setAdapter(adapter);
 
-
-
-//        Client client = new Client(current_client.getEmail(), current_client.getName(),);
+        final CollectionReference db_a_restaurant = db.collection(restaurant);
 
         Button nextBtn1 = (Button) findViewById(R.id.next_process_btn);
         nextBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Bundle extras = new Bundle();
-                extras.putSerializable("HashMap", (Serializable) order);
+                if(option.equals("Delivery")){
+                    sendOrder(current_client, db_a_restaurant, "Delivery");
+                    Intent startIntent = new Intent(getApplicationContext(), DeliverActivity.class);
+                    startActivity(startIntent);
+                }else{
+                    sendOrder(current_client, db_a_restaurant, "Take out");
+                    Intent startIntent = new Intent(getApplicationContext(), TakeoutActivity.class);
+                    startActivity(startIntent);
+                }
 
-                Intent startIntent = new Intent(getApplicationContext(), OptionActivity.class);
-                startIntent.putExtra("current_client",  current_client);
-                startIntent.putExtras(extras);
-                startIntent.putExtra("Restaurant", restaurant);
-                startActivity(startIntent);
+
             }
         });
+
+    }
+    public void sendOrder(User current_client, CollectionReference db_a_restaurant, String order_option) {
+        String pattern = "MM-dd-yyyy HH:mm:ss";
+        Date currentTime = Calendar.getInstance().getTime();
+        // Create an instance of SimpleDateFormat used for formatting
+        // the string representation of date according to the chosen pattern
+        DateFormat df = new SimpleDateFormat(pattern);
+        String todayAsString = df.format(currentTime);
+
+        order.put("Time", todayAsString);
+        order.put("Option", order_option);
+
+        //save data in the restaurant collection
+        db_a_restaurant.document(todayAsString).set(order).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(ReviewActivity.this, "order saved", Toast.LENGTH_LONG).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(ReviewActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                Log.w(TAG, e.toString());
+
+            }
+        });
+        //delete items in the cart
+        users_ref.document(current_client.getEmail()).update("cart", null);
+
     }
 
 
