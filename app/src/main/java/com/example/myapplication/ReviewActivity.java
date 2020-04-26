@@ -6,7 +6,6 @@ import com.example.myapplication.abfactory.Order;
 import com.example.myapplication.abfactory.Restaurant;
 import com.example.myapplication.strategy.*;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,19 +15,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,10 +29,14 @@ public class ReviewActivity extends AppCompatActivity {
     private CollectionReference users_ref = db.collection("users");
     private static final String TAG = "Option activity";
     private Map<String, Object> order;
-    private TextView costText;
+    private TextView total_costText;
+    private TextView delivery_costText;
     private Map<String, Map<String, Object>> cart_info = new HashMap<>();
     private ArrayList<Order> orderList = new ArrayList<>();
     private Restaurant rest1;
+    private VIPBehavior vipBehavior = new VIPBehavior();
+    private NonVIPBehavior nonVIPBehavior = new NonVIPBehavior();
+    Client n_client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +65,8 @@ public class ReviewActivity extends AppCompatActivity {
             rest1 = new MexicanRestaurant();
         }
 
+
+        double total_cost = 0;
         cart_info = (Map<String, Map<String, Object>>) order.get("Orders");
         // get displayed array
         for(int i = 0; i< cart_info.size(); i++){
@@ -93,9 +91,24 @@ public class ReviewActivity extends AppCompatActivity {
             }
         }
 
-        costText = findViewById(R.id.total_cost);
+        //caculate total cost
+        for (int i = 0; i < orderList.size(); i++){
+            total_cost += orderList.get(i).getMeal().getEntree().getPrice() * orderList.get(i).getQuantity();
+            total_cost += orderList.get(i).getMeal().getDrink().getPrice() * orderList.get(i).getQuantity();
+        }
+        //add shipping fee
+        if (current_client.getType() == "VIPCustomer" ){
+            n_client = new Client(current_client.getEmail(), current_client.getName(), vipBehavior);
+        }else{
+            n_client = new Client(current_client.getEmail(), current_client.getName(), nonVIPBehavior);
+        }
+        double deliver_cost = n_client.paydeliveryFee(total_cost);
+        total_cost += deliver_cost;
 
-        costText.setText("0");
+        delivery_costText = findViewById(R.id.delivery_cost);
+        delivery_costText.setText(String.valueOf(deliver_cost));
+        total_costText = findViewById(R.id.total_cost);
+        total_costText.setText(String.valueOf(total_cost));
 
         ListView mListView = (ListView) findViewById(R.id.cart_list);
         OrderListAdapter adapter = new OrderListAdapter(this, R.layout.cart_items_layout, orderList);

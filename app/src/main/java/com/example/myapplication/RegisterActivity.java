@@ -14,18 +14,16 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
+
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -51,6 +49,8 @@ public class RegisterActivity extends AppCompatActivity {
         editTextName = findViewById(R.id.register_name);
         editTextPassword = findViewById(R.id.register_password);
         spinnerType = findViewById(R.id.typeSpinner);
+
+
 
         Spinner typeSpinner = (Spinner) findViewById(R.id.typeSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.type_array, android.R.layout.simple_spinner_item);

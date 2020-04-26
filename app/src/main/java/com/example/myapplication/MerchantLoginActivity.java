@@ -50,8 +50,8 @@ public class MerchantLoginActivity extends AppCompatActivity {
                             if(documentSnapshot.exists()){
                                 //check password
                                 if(documentSnapshot.getString("password").equals(login_password)) {
-                                    Log.d(TAG, documentSnapshot.getString("name") + documentSnapshot.getString("email") + documentSnapshot.getString("password"));
-                                    User user = new User(documentSnapshot.getString("name"), documentSnapshot.getString("email"), documentSnapshot.getString("password"));
+                                    Log.d(TAG, documentSnapshot.getString("name") + documentSnapshot.getString("email") + documentSnapshot.getString("password") + documentSnapshot.getString("type"));
+                                    User user = new User(documentSnapshot.getString("name"), documentSnapshot.getString("email"), documentSnapshot.getString("password"), documentSnapshot.getString("type"));
                                     Intent startIntent = new Intent(getApplicationContext(), MerchantMenuActivity.class);
                                     startIntent.putExtra("current_client",  user);
                                     startActivity(startIntent);

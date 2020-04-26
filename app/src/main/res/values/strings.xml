@@ -39,6 +39,7 @@
     <string name="choose_type">Choose User Type</string>
     <string-array name="type_array">
         <item>Customer</item>
+        <item>VIPCustomer</item>
         <item>Merchant</item>
         <item>DeliveryMan</item>
     </string-array>

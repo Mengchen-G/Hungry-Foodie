@@ -6,14 +6,15 @@ import android.os.Parcelable;
 import java.util.Map;
 
 public class User implements Parcelable {
-    private String name, email, password;
+    private String name, email, password, type;
 //    private Map<String, Object> cart;
 
 
-    public User(String name, String email, String password) {
+    public User(String name, String email, String password, String type) {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.type = type;
     }
 
 
@@ -29,6 +30,9 @@ public class User implements Parcelable {
         return password;
     }
 
+    public String getType() {
+        return type;
+    }
 
     @Override
     public int describeContents() {
@@ -40,6 +44,7 @@ public class User implements Parcelable {
         dest.writeString(name);
         dest.writeString(email);
         dest.writeString(password);
+        dest.writeString(type);
 //        dest.writeSerializable((Serializable) cart);
 //        dest.writeList(cart);
 
@@ -63,6 +68,7 @@ public class User implements Parcelable {
         this.name = in.readString();
         this.email = in.readString();
         this.password = in.readString();
+        this.type = in.readString();
 //        this.cart = (Map<String, Object>) in.readSerializable();
 //        this.cart = in.readArrayList(null);
 
