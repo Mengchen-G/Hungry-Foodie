@@ -3,8 +3,11 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -14,7 +17,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 public class MerchantMainMenuActivity extends AppCompatActivity {
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static final String TAG = "Merchant Main activity";
 
     @Override
@@ -28,23 +30,32 @@ public class MerchantMainMenuActivity extends AppCompatActivity {
         final User current_client = (User) data.getParcelable("current_client");
         assert current_client != null;
         String username = "Hi, " + current_client.getName();
-        String restaurant = data.getString("Restaurant");
-        CollectionReference restaurant_ref = db.collection(restaurant);
+        final String restaurant = data.getString("Restaurant");
 
-        restaurant_ref.get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
+        Button display_btn = (Button)findViewById(R.id.display_btn);
+        display_btn.setOnClickListener(new View.OnClickListener() {
 
-                            }
-                        } else {
-                            Log.w(TAG, "Error getting documents.", task.getException());
-                        }
-                    }
-                });
+            @Override
+            public void onClick(View v) {
+                Intent startIntent = new Intent(getApplicationContext(), MerchantMenuActivity.class);
+                startIntent.putExtra("current_client",  current_client);
+                startIntent.putExtra("Restaurant",  restaurant);
+                startActivity(startIntent);
+            }
+        });
+
+        Button adjust_btn = (Button)findViewById(R.id.display_btn);
+        adjust_btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent startIntent = new Intent(getApplicationContext(), MerchantDisplayOrder.class);
+                startIntent.putExtra("current_client",  current_client);
+                startIntent.putExtra("Restaurant",  restaurant);
+                startActivity(startIntent);
+            }
+        });
+
 
 
     }
