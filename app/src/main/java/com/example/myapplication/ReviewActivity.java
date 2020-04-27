@@ -79,16 +79,40 @@ public class ReviewActivity extends AppCompatActivity {
         double total_cost = 0;
         cart_info = (Map<String, Map<String, Object>>) order.get("Orders");
         // get displayed array
+//        for(int i = 0; i< cart_info.size(); i++){
+//            String Meal_name = String.valueOf(((Map<String, Object>) cart_info.get(String.valueOf(i))).get("Item name"));
+//            if (orderList.size()==0){
+//                Meal new_meal = rest1.createMeal(Meal_name);
+//                Order new_order = new Order(new_meal, 1);
+//                orderList.add(new_order);
+//            }else {
+//                boolean change = false;
+//                for (int j = 0; j < orderList.size(); j++) {
+//                    if (orderList.get(j).getMeal().getEntree().getName().equals(Meal_name)) {
+//                        orderList.get(j).setQuantity(orderList.get(j).getQuantity() + 1);
+//                        change = true;
+//                    }
+//                }
+//                if(!change){
+//                    Meal new_meal = rest1.createMeal(Meal_name);
+//                    Order new_order = new Order(new_meal, 1);
+//                    orderList.add(new_order);
+//                }
+//            }
+//        }
         for(int i = 0; i< cart_info.size(); i++){
             String Meal_name = String.valueOf(((Map<String, Object>) cart_info.get(String.valueOf(i))).get("Item name"));
+            String meal_description = String.valueOf(((Map<String, Object>) cart_info.get(String.valueOf(i))).get("Description"));
             if (orderList.size()==0){
                 Meal new_meal = rest1.createMeal(Meal_name);
                 Order new_order = new Order(new_meal, 1);
+                new_order.getMeal().getEntree().setDescription(meal_description);
+                new_order.getMeal().getEntree().setPrice((double) ((Map<String, Object>) cart_info.get(String.valueOf(i))).get("Price") - new_order.getMeal().getDrink().getPrice());
                 orderList.add(new_order);
             }else {
                 boolean change = false;
                 for (int j = 0; j < orderList.size(); j++) {
-                    if (orderList.get(j).getMeal().getEntree().getName().equals(Meal_name)) {
+                    if (orderList.get(j).getMeal().getEntree().getName().equals(Meal_name) && orderList.get(j).getMeal().getEntree().getDescription().equals(meal_description)) {
                         orderList.get(j).setQuantity(orderList.get(j).getQuantity() + 1);
                         change = true;
                     }
@@ -96,6 +120,8 @@ public class ReviewActivity extends AppCompatActivity {
                 if(!change){
                     Meal new_meal = rest1.createMeal(Meal_name);
                     Order new_order = new Order(new_meal, 1);
+                    new_order.getMeal().getEntree().setDescription(meal_description);
+                    new_order.getMeal().getEntree().setPrice((double) ((Map<String, Object>) cart_info.get(String.valueOf(i))).get("Price") - new_order.getMeal().getDrink().getPrice());
                     orderList.add(new_order);
                 }
             }

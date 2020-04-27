@@ -2,9 +2,9 @@ package com.example.myapplication.abfactory;
 
 public abstract class Drink {
     String name;
-    Double price;
+    double price;
 
     public abstract String getName();
 
-    public abstract Double getPrice();
+    public abstract double getPrice();
 }

@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplication.abfactory.AmericanRestaurant;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
@@ -42,6 +43,7 @@ public class MerchantLoginActivity extends AppCompatActivity {
             public void onClick(View v) {
             final String login_email = editTextEmail.getText().toString().trim();
             final String login_password = editTextPassword.getText().toString().trim();
+
             //extract data from database
             users_ref.document(login_email).get()
                     .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -52,8 +54,13 @@ public class MerchantLoginActivity extends AppCompatActivity {
                                 if(documentSnapshot.getString("password").equals(login_password)) {
                                     Log.d(TAG, documentSnapshot.getString("name") + documentSnapshot.getString("email") + documentSnapshot.getString("password") + documentSnapshot.getString("type"));
                                     User user = new User(documentSnapshot.getString("name"), documentSnapshot.getString("email"), documentSnapshot.getString("password"), documentSnapshot.getString("type"));
-                                    Intent startIntent = new Intent(getApplicationContext(), MerchantMenuActivity.class);
+                                    Intent startIntent = new Intent(getApplicationContext(), MerchantMainMenuActivity.class);
                                     startIntent.putExtra("current_client",  user);
+                                    if(documentSnapshot.getString("email").contains("american")){
+                                        startIntent.putExtra("Restaurant", "AmericanRestaurant");
+                                    }else{
+                                        startIntent.putExtra("Restaurant", "MexicanRestaurant");
+                                    }
                                     startActivity(startIntent);
                                 }else{
                                     Toast.makeText(MerchantLoginActivity.this, "Wrong password", Toast.LENGTH_LONG).show();

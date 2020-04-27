@@ -16,10 +16,13 @@ import android.widget.TextView;
 import java.io.Serializable;
 
 import com.example.myapplication.abfactory.AmericanRestaurant;
+import com.example.myapplication.abfactory.Entree;
 import com.example.myapplication.abfactory.Meal;
 import com.example.myapplication.abfactory.MexicanRestaurant;
 import com.example.myapplication.abfactory.Order;
 import com.example.myapplication.abfactory.Restaurant;
+import com.example.myapplication.decorator.AddOnCheese;
+import com.example.myapplication.decorator.AddOnMeat;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -41,6 +44,7 @@ public class PlaceAnOrder extends AppCompatActivity {
     private Map<String, Map<String, Object>> cart_info = new HashMap<>();
     private String email;
     private Restaurant rest1;
+    private Restaurant rest2;
 
 
     @Override
@@ -68,15 +72,37 @@ public class PlaceAnOrder extends AppCompatActivity {
         //Extract the data
         String order_name = bundle.getString("order_name");
         final String restaurant = bundle.getString("Restaurant");
+        ArrayList<String> checkboxList = bundle.getStringArrayList("CheckboxList");
 
         //use abstract factory pattern to get meal object
         if(restaurant.equals("AmericanRestaurant")){
             rest1 = new AmericanRestaurant();
+            rest2 = new AmericanRestaurant();
         }else if(restaurant.equals("MexicanRestaurant")) {
             rest1 = new MexicanRestaurant();
+            rest2 = new MexicanRestaurant();
         }
+
         Meal meal = rest1.createMeal(order_name);
+        Meal meal2 = rest2.createMeal(order_name);
+
+        Entree addon_entree = meal2.getEntree();
+        for (int i = 0; i < checkboxList.size(); i++){
+            if(checkboxList.get(i).equals("Meat")){
+                addon_entree = new AddOnMeat(addon_entree);
+            }else{
+                addon_entree = new AddOnCheese(addon_entree);
+            }
+        }
+
+        meal.getEntree().setDescription(addon_entree.getDescription());
+        meal.getEntree().setPrice(addon_entree.getPrice());
+
+        Log.d(TAG, String.valueOf(addon_entree.getPrice()));
+        Log.d(TAG, addon_entree.getDescription());
+
         Order order = new Order(meal, 1);
+
 
         //load order
         try {
@@ -91,14 +117,17 @@ public class PlaceAnOrder extends AppCompatActivity {
         // get displayed array
         for(int i = 0; i< cart_info.size(); i++){
             String Meal_name = String.valueOf(((Map<String, Object>) cart_info.get(String.valueOf(i))).get("Item name"));
+            String meal_description = String.valueOf(((Map<String, Object>) cart_info.get(String.valueOf(i))).get("Description"));
             if (orderList.size()==0){
                 Meal new_meal = rest1.createMeal(Meal_name);
                 Order new_order = new Order(new_meal, 1);
+                new_order.getMeal().getEntree().setDescription(meal_description);
+                new_order.getMeal().getEntree().setPrice((double) ((Map<String, Object>) cart_info.get(String.valueOf(i))).get("Price") - new_order.getMeal().getDrink().getPrice());
                 orderList.add(new_order);
             }else {
                 boolean change = false;
                 for (int j = 0; j < orderList.size(); j++) {
-                    if (orderList.get(j).getMeal().getEntree().getName().equals(Meal_name)) {
+                    if (orderList.get(j).getMeal().getEntree().getName().equals(Meal_name) && orderList.get(j).getMeal().getEntree().getDescription().equals(meal_description)) {
                         orderList.get(j).setQuantity(orderList.get(j).getQuantity() + 1);
                         change = true;
                     }
@@ -106,6 +135,8 @@ public class PlaceAnOrder extends AppCompatActivity {
                 if(!change){
                     Meal new_meal = rest1.createMeal(Meal_name);
                     Order new_order = new Order(new_meal, 1);
+                    new_order.getMeal().getEntree().setDescription(meal_description);
+                    new_order.getMeal().getEntree().setPrice((double) ((Map<String, Object>) cart_info.get(String.valueOf(i))).get("Price") - new_order.getMeal().getDrink().getPrice());
                     orderList.add(new_order);
                 }
             }
@@ -147,6 +178,7 @@ public class PlaceAnOrder extends AppCompatActivity {
                     meal_info.put("Item name", cart_info.get(String.valueOf(i)).get("Item name"));
                     meal_info.put("Quantity", cart_info.get(String.valueOf(i)).get("Quantity"));
                     meal_info.put("Price", cart_info.get(String.valueOf(i)).get("Price"));
+                    meal_info.put("Description", cart_info.get(String.valueOf(i)).get("Description"));
                     order_info.put(String.valueOf(i), meal_info);
                 }
 
@@ -168,11 +200,11 @@ public class PlaceAnOrder extends AppCompatActivity {
     public Map<String, Map<String, Object>> updateDatabase(Order order, User current_client, CollectionReference users_ref, Map<String, Map<String, Object>> cart_info){
         Log.d(TAG, "Update data.........");
         int cart_size = cart_info.size();
-        Log.d(TAG, "update: " + cart_info.size());
         Map<String, Object> meal_info = new HashMap<>();
         meal_info.put("Item name", order.getMeal().getEntree().getName());
         meal_info.put("Quantity", order.getQuantity());
         meal_info.put("Price", order.getPrice());
+        meal_info.put("Description", order.getMeal().getEntree().getDescription());
         cart_info.put(String.valueOf(cart_size), meal_info);
         users_ref.document(current_client.getEmail()).update("cart", cart_info);
         Log.d(TAG, "Data updated.........");

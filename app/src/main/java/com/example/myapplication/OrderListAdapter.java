@@ -50,6 +50,7 @@ public class OrderListAdapter extends ArrayAdapter<Order> {
         String sEntreePrice = String.valueOf(entree_price);
         String sDrinkPrice = String.valueOf(drink_price);
         String sQuantity = String.valueOf(quantity);
+        String description = meal.getEntree().getDescription();
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
 
@@ -64,9 +65,11 @@ public class OrderListAdapter extends ArrayAdapter<Order> {
         TextView txtEntreePrice = (TextView) convertView.findViewById(R.id.cart_entree_price);
         TextView txtDrinkName = (TextView) convertView.findViewById(R.id.cart_drink_name);
         TextView txtDrinkPrice = (TextView) convertView.findViewById(R.id.cart_drink_price);
+        TextView txtDescription = (TextView) convertView.findViewById(R.id.cart_meal_description);
 
 //        txtMealQuantity.setText(sQuantity);
         txtMealName.setText(entreeName + " meal");
+        txtDescription.setText(description);
         txtMealPrice.setText("$" + sPrice);
         txtEntreeName.setText(entreeName);
         txtEntreePrice.setText("$" + sEntreePrice + " x " + sQuantity);

@@ -31,7 +31,7 @@ public class MenuActivity extends AppCompatActivity {
         burgerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent startIntent = new Intent(MenuActivity.this, PlaceAnOrder.class);
+                Intent startIntent = new Intent(MenuActivity.this, AddOnActivity.class);
                 //Create the bundle
                 Bundle bundle = new Bundle();
                 //Add your data to bundle
@@ -50,7 +50,7 @@ public class MenuActivity extends AppCompatActivity {
         hotdogBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent startIntent = new Intent(MenuActivity.this, PlaceAnOrder.class);
+                Intent startIntent = new Intent(MenuActivity.this, AddOnActivity.class);
                 Bundle bundle = new Bundle();
                 String order_name = "Hotdog";
                 bundle.putString("order_name", order_name);
