@@ -37,19 +37,19 @@ public class MerchantMainMenuActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent startIntent = new Intent(getApplicationContext(), MerchantMenuActivity.class);
+                Intent startIntent = new Intent(getApplicationContext(), MerchantDisplayOrder.class);
                 startIntent.putExtra("current_client",  current_client);
                 startIntent.putExtra("Restaurant",  restaurant);
                 startActivity(startIntent);
             }
         });
 
-        Button adjust_btn = (Button)findViewById(R.id.display_btn);
+        Button adjust_btn = (Button)findViewById(R.id.adjust_menu_btn);
         adjust_btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent startIntent = new Intent(getApplicationContext(), MerchantDisplayOrder.class);
+                Intent startIntent = new Intent(getApplicationContext(), MerchantMenuActivity.class);
                 startIntent.putExtra("current_client",  current_client);
                 startIntent.putExtra("Restaurant",  restaurant);
                 startActivity(startIntent);
