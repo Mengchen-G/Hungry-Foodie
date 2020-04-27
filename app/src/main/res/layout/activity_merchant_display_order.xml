@@ -44,10 +44,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/r111"
-
+        android:layout_above="@+id/next_process_btn"
+        android:layout_marginBottom="5dp"
         android:id="@+id/cart_list"/>
 
+    <Button
+        android:id="@+id/next_process_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorAccent"
+        android:fontFamily="monospace"
+        android:text="Notify driver"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="5dp">
 
+    </Button>
 
 
 

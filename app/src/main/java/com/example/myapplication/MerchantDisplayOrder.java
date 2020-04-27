@@ -3,9 +3,13 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.myapplication.abfactory.AmericanRestaurant;
 import com.example.myapplication.abfactory.Meal;
@@ -13,12 +17,15 @@ import com.example.myapplication.abfactory.MexicanRestaurant;
 import com.example.myapplication.abfactory.Order;
 import com.example.myapplication.abfactory.Restaurant;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -77,6 +84,36 @@ public class MerchantDisplayOrder extends AppCompatActivity {
         ListView mListView = (ListView) findViewById(R.id.cart_list);
         MOrderListAdapter adapter = new MOrderListAdapter(this, R.layout.merchant_items_layout, orderList);
         mListView.setAdapter(adapter);
+
+        Button nextBtn1 = (Button) findViewById(R.id.next_process_btn);
+        nextBtn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //send order to the restaurant
+                CollectionReference db_driver = db.collection("Driver");
+                Map<String, Object> notice = new HashMap<>();
+
+                notice.put("Restaurant", restaurant);
+
+                db_driver.document("Notice").set(notice).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(MerchantDisplayOrder.this, "Registered", Toast.LENGTH_LONG).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MerchantDisplayOrder.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                        Log.w(TAG, e.toString());
+
+                    }
+                });
+
+                Intent startIntent = new Intent(getApplicationContext(), MerchantMainMenuActivity.class);
+                startIntent.putExtra("current_client",  current_client);
+                startActivity(startIntent);
+            }
+        });
 
 
 
