@@ -15,7 +15,7 @@ public class MerchantMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_merchant_menu);
 
-        Button checkBtn = (Button) findViewById(R.id.checkBtn);
+        Button checkBtn = (Button) findViewById(R.id.mEditBtn);
         checkBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
