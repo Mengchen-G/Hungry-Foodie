@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustPan">
+        <activity android:name=".Pop_edit"></activity>
         <activity android:name=".MerchantSummaryActivity" />
         <activity android:name=".MakeDeliverActivity" />
         <activity android:name=".DriverNoticeActivity" />
