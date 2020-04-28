@@ -1,4 +1,4 @@
-package com.example.myapplication.decorator;
+package com.example.myapplication.Decorator;
 import com.example.myapplication.abfactory.*;
 
 public abstract class AddOn extends Entree {

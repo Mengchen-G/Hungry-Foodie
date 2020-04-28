@@ -1,12 +1,12 @@
-package com.example.myapplication.decorator;
+package com.example.myapplication.Decorator;
 
 import com.example.myapplication.abfactory.Entree;
 
-public class AddOnMeat extends AddOn{
+public class AddOnCheese extends AddOn{
     double price;
     Entree entree;
 
-    public AddOnMeat(Entree entree){
+    public AddOnCheese(Entree entree){
         this.entree = entree;
     }
 
@@ -17,12 +17,12 @@ public class AddOnMeat extends AddOn{
 
     @Override
     public String getDescription() {
-        return entree.getDescription() + " Extra beef";
+        return entree.getDescription() + " Extra cheese";
     }
 
     @Override
     public double getPrice() {
-        return entree.getPrice() + 1.0;
+        return entree.getPrice() + 0.5;
     }
 
     public void setPrice(double p){

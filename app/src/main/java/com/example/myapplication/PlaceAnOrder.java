@@ -3,7 +3,6 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import android.app.VoiceInteractor;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,8 +20,8 @@ import com.example.myapplication.abfactory.Meal;
 import com.example.myapplication.abfactory.MexicanRestaurant;
 import com.example.myapplication.abfactory.Order;
 import com.example.myapplication.abfactory.Restaurant;
-import com.example.myapplication.decorator.AddOnCheese;
-import com.example.myapplication.decorator.AddOnMeat;
+import com.example.myapplication.Decorator.AddOnCheese;
+import com.example.myapplication.Decorator.AddOnMeat;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
