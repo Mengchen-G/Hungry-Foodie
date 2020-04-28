@@ -10,7 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustPan">
-        <activity android:name=".DriverNoticeActivity"></activity>
+        <activity android:name=".MerchantSummaryActivity"></activity>
+        <activity android:name=".MakeDeliverActivity" />
+        <activity android:name=".DriverNoticeActivity" />
         <activity android:name=".MerchantDisplayOrder" />
         <activity android:name=".AddOnActivity" />
         <activity android:name=".MerchantMainMenuActivity" />

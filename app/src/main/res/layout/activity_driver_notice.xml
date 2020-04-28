@@ -30,36 +30,47 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_alignParentRight="true" />
 
-    <TextView
-        android:id="@+id/optionTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="35dp"
-        android:layout_marginBottom="30dp"
-        android:fontFamily="monospace"
-        android:gravity="center"
-        android:text="Notice"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/optionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:text="@string/notification"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </RelativeLayout>
 
     <TextView
-    android:id="@+id/deliveryStatusTextView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="No update"
-    android:textSize="30sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.497"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/topBanner"
-    app:layout_constraintVertical_bias="0.532" />
+        android:id="@+id/deliveryStatusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_update"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topBanner"
+        app:layout_constraintVertical_bias="0.415" />
+
+    <Button
+        android:id="@+id/pickBtn"
+        android:layout_width="352dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="216dp"
+        android:text="@string/pickup_deliver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deliveryStatusTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

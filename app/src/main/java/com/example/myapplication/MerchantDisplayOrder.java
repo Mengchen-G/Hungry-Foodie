@@ -85,7 +85,7 @@ public class MerchantDisplayOrder extends AppCompatActivity {
         MOrderListAdapter adapter = new MOrderListAdapter(this, R.layout.merchant_items_layout, orderList);
         mListView.setAdapter(adapter);
 
-        Button nextBtn1 = (Button) findViewById(R.id.next_process_btn);
+        Button nextBtn1 = (Button) findViewById(R.id.notifyDBtn);
         nextBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,7 +109,7 @@ public class MerchantDisplayOrder extends AppCompatActivity {
                     }
                 });
 
-                Intent startIntent = new Intent(getApplicationContext(), MerchantMainMenuActivity.class);
+                Intent startIntent = new Intent(getApplicationContext(), MerchantSummaryActivity.class);
                 startIntent.putExtra("current_client",  current_client);
                 startActivity(startIntent);
             }

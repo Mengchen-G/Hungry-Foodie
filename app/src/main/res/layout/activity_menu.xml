@@ -50,7 +50,7 @@
         android:layout_marginLeft="103dp"
         android:layout_marginEnd="104dp"
         android:layout_marginRight="104dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="44dp"
         android:contentDescription="@string/Hotdog_Meal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,13 +62,13 @@
         android:id="@+id/burger_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
         android:layout_marginBottom="35dp"
         android:contentDescription="@string/Burger_Meal"
         app:layout_constraintBottom_toTopOf="@+id/hotdog_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/r111"
+        app:layout_constraintTop_toBottomOf="@+id/topBanner"
+        app:layout_constraintVertical_bias="0.784"
         app:srcCompat="@drawable/burger" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

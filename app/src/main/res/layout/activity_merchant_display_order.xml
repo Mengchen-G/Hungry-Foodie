@@ -49,26 +49,15 @@
         android:id="@+id/cart_list"/>
 
     <Button
-        android:id="@+id/next_process_btn"
+        android:id="@+id/notifyDBtn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorAccent"
-        android:fontFamily="monospace"
-        android:text="Notify driver"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
+        android:layout_height="73dp"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="5dp">
-
-    </Button>
-
-
-
-
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="0dp"
+        android:background="@color/colorAccent"
+        android:text="@string/notify_driver" />
 
 
 </RelativeLayout>

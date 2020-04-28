@@ -10,7 +10,14 @@
     <string name="update">Update</string>
     <string name="m_login">Login as Merchant</string>
     <string name="d_login">Login as Deliveryman</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="orders">Orders</string>
+    <string name="notification">Notifications</string>
+    <string name="no_update">No Update</string>
+    <string name="back">Log out</string>
 
+    <string name="name">Name</string>
+    <string name="price">Price</string>
     <string name="restaurants_menu">Menu</string>
     <string name="order_summary">Order Summary</string>
     <string name="restaurants_list">Restaurants List</string>
@@ -24,17 +31,24 @@
     <string name="Burger">Burger</string>
     <string name="Hotdog">Hot Dog</string>
     <string name="Pepsi">Pepsi</string>
+    <string name="chips">Chip Meal</string>
 
     <string name="order_option">Order Option</string>
     <string name="option_delivery">Deliver</string>
     <string name="delivery_status">Delivery Status</string>
     <string name="option_takeout">Take Out</string>
     <string name="takeout_status">Takeout Status</string>
+    <string name="adjust">Adjust display menu item</string>
     <string name="register_now">Register now</string>
     <string name="email">Email</string>
+    <string name="display_new">Display new orders</string>
     <string name="user_name">User name</string>
     <string name="register">Register</string>
     <string name="edit_menu">Edit Menu</string>
+    <string name="notify_driver">Notify DeliveryMan</string>
+    <string name="pickup_deliver">Start Deliver</string>
+    <string name="order_delivery">Order Delivery</string>
+    <string name="notified">Notification Summary</string>
 
     <string name="choose_type">Choose User Type</string>
     <string-array name="type_array">

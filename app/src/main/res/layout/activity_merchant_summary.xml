@@ -4,34 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MerchantMenuActivity">
-
-    <ImageButton
-        android:id="@+id/burger_btn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="360dp"
-        android:contentDescription="@string/Burger_Meal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topBanner"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/burger" />
+    tools:context=".MerchantSummaryActivity">
 
     <RelativeLayout
-        android:id="@+id/topBanner"
+        android:id="@+id/r111"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
+        android:layout_marginBottom="631dp"
         android:background="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/menu_welcome"
+            android:id="@+id/checkout_welcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -43,34 +31,43 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/menuTextView"
+            android:id="@+id/infoTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginTop="30dp"
             android:fontFamily="monospace"
             android:gravity="center"
-            android:text="@string/restaurants_menu"
+            android:text="@string/notified"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="30sp" />
+
     </RelativeLayout>
 
-    <ImageButton
-        android:id="@+id/hotdog_btn2"
+    <TextView
+        android:id="@+id/mSummaryTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="103dp"
-        android:layout_marginLeft="103dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginRight="104dp"
-        android:contentDescription="@string/Hotdog_Meal"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/burger_btn2"
-        app:layout_constraintVertical_bias="0.273"
-        app:srcCompat="@drawable/hotdog" />
+        app:layout_constraintTop_toBottomOf="@+id/r111"
+        app:layout_constraintVertical_bias="0.305" />
 
+    <Button
+        android:id="@+id/backMainBtn"
+        android:layout_width="235dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginRight="88dp"
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mSummaryTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
