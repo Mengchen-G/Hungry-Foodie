@@ -29,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
         Calendar c = Calendar.getInstance();
         int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
 
+        // add greeting message based on 24-hour of the day
         String message = "";
         if(timeOfDay < 12){
             message += "Good Morning ";
@@ -43,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
         user_welcome.setText(username);
         user_welcome.setVisibility(View.VISIBLE);
 
-
+        // restaurant 1
         Button restBtn1 = (Button)findViewById(R.id.restBtn1);
         restBtn1.setOnClickListener(new View.OnClickListener() {
 
@@ -55,6 +56,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        // restaurant 2
         Button restBtn2 = (Button)findViewById(R.id.restBtn2);
         restBtn2.setOnClickListener(new View.OnClickListener() {
 
