@@ -64,6 +64,7 @@
         android:id="@+id/mapView"
         android:layout_width="344dp"
         android:layout_height="350dp"
+        android:background="#8FA5E4"
         app:layout_constraintBottom_toTopOf="@+id/deliveryStatusTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
