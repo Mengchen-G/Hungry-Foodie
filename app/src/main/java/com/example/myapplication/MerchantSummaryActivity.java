@@ -28,12 +28,21 @@ public class MerchantSummaryActivity extends AppCompatActivity {
         String message = "Notified DeliveryMan";
         summTextView.setText(message);
 
+        Button checkBtn = (Button) findViewById(R.id.checkBtn);
+        checkBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent startIntent = new Intent(MerchantSummaryActivity.this, Pop.class);
+                startActivity(startIntent);
+            }
+        });
+
         Button backBtn = (Button) findViewById(R.id.backMainBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-            Intent startIntent = new Intent(getApplicationContext(), LoginActivity.class);
+            Intent startIntent = new Intent(getApplicationContext(), MerchantMainMenuActivity.class);
             startIntent.putExtra("current_client",  current_client);
             startActivity(startIntent);
             }

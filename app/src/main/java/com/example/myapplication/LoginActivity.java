@@ -74,21 +74,19 @@ public class LoginActivity extends AppCompatActivity {
                                     if(documentSnapshot.getString("password").equals(login_password)) {
                                         Log.d(TAG, documentSnapshot.getString("name") + documentSnapshot.getString("email") + documentSnapshot.getString("password") + documentSnapshot.getString("type"));
                                         User user = new User(documentSnapshot.getString("name"), documentSnapshot.getString("email"), documentSnapshot.getString("password"), documentSnapshot.getString("type"));
-                                        if(documentSnapshot.getString("type").equals("DeliveryMan")) {
-                                            Intent startIntent = new Intent(getApplicationContext(), DriverNoticeActivity.class);
-                                            startIntent.putExtra("current_client", user);
-                                            startActivity(startIntent);
-                                        }
-                                        else if(documentSnapshot.getString("type").equals("Merchant")) {
-                                            Intent startIntent = new Intent(getApplicationContext(), MerchantMainMenuActivity.class);
-                                            startIntent.putExtra("current_client", user);
-                                            startActivity(startIntent);
-                                        }
-                                        else {
-                                            Intent startIntent = new Intent(getApplicationContext(), HomeActivity.class);
-                                            startIntent.putExtra("current_client", user);
-                                            startActivity(startIntent);
-                                        }
+//                                        if(documentSnapshot.getString("type").equals("DeliveryMan")) {
+//                                            Intent startIntent = new Intent(getApplicationContext(), DriverNoticeActivity.class);
+//                                            startIntent.putExtra("current_client", user);
+//                                            startActivity(startIntent);
+//                                        }
+//                                        else if(documentSnapshot.getString("type").equals("Merchant")) {
+//                                            Intent startIntent = new Intent(getApplicationContext(), MerchantMainMenuActivity.class);
+//                                            startIntent.putExtra("current_client", user);
+//                                            startActivity(startIntent);
+//                                        }
+                                        Intent startIntent = new Intent(getApplicationContext(), HomeActivity.class);
+                                        startIntent.putExtra("current_client", user);
+                                        startActivity(startIntent);
                                     }
                                     else{
                                         Toast.makeText(LoginActivity.this, "Wrong password", Toast.LENGTH_LONG).show();

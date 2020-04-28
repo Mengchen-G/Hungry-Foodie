@@ -25,6 +25,7 @@
     <string name="user_name">User name</string>
     <string name="register">Register</string>
     <string name="choose_type">Choose User Type</string>
+    <string name="back">Back to Main</string>
     <string name="wrong_type">Only registered customer can checkout</string>
     <string-array name="type_array">
         <item>Customer</item>
@@ -38,7 +39,6 @@
     <string name="orders">Orders</string>
     <string name="notification">Notifications</string>
     <string name="no_update">No Update</string>
-    <string name="back">Log out</string>
 
 
     <!-- customer view -->
@@ -67,5 +67,7 @@
     <string name="pickup_deliver">Start Deliver</string>
     <string name="order_delivery">Order Delivery</string>
     <string name="notified">Notification Summary</string>
+    <string name="checkM">Deliver Status Follow-up</string>
+    <string name="pop_message">Pop window message here</string>
 
 </resources>
