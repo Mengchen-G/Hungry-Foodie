@@ -1,30 +1,50 @@
 <resources>
-    // register, log in
+    <!-- app info -->
     <string name="app_name">HUNGRY FOODIE</string>
+
+    <!-- functions -->
     <string name="next">NEXT</string>
     <string name="previous">Previous</string>
+    <string name="update">Update</string>
+    <string name="name">Name</string>
+    <string name="price">Price</string>
+    <string name="check_out">Check Out</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="adjust">Adjust display menu item</string>
+
+    <!-- register, login -->
     <string name="title_login">LOG IN</string>
     <string name="prompt_email">name@example.com</string>
     <string name="prompt_password">Password</string>
     <string name="merchant_login">MERCHANT LOG IN</string>
     <string name="delivery_login">DELIVERY LOG IN</string>
-    <string name="update">Update</string>
     <string name="m_login">Login as Merchant</string>
     <string name="d_login">Login as Deliveryman</string>
+    <string name="register_now">Register now</string>
+    <string name="email">Email</string>
+    <string name="user_name">User name</string>
+    <string name="register">Register</string>
+    <string name="choose_type">Choose User Type</string>
+    <string-array name="type_array">
+        <item>Customer</item>
+        <item>VIPCustomer</item>
+        <item>Merchant</item>
+        <item>DeliveryMan</item>
+    </string-array>
+
+    <!-- delivery part -->
     <string name="main_menu">Main Menu</string>
     <string name="orders">Orders</string>
     <string name="notification">Notifications</string>
     <string name="no_update">No Update</string>
     <string name="back">Log out</string>
 
-    <string name="name">Name</string>
-    <string name="price">Price</string>
+
+    <!-- customer view -->
     <string name="restaurants_menu">Menu</string>
     <string name="order_summary">Order Summary</string>
     <string name="restaurants_list">Restaurants List</string>
     <string name="restaurants_pic">Restaurants Picture</string>
-    <string name="check_out">Check Out</string>
-    <string name="add_to_cart">Add to Cart</string>
     <string name="Item">Item</string>
     <string name="Price">Price</string>
     <string name="Burger_Meal">Burger Meal</string>
@@ -33,29 +53,18 @@
     <string name="Hotdog">Hot Dog</string>
     <string name="Pepsi">Pepsi</string>
     <string name="chips">Chip Meal</string>
-
     <string name="order_option">Order Option</string>
     <string name="option_delivery">Deliver</string>
     <string name="delivery_status">Delivery Status</string>
     <string name="option_takeout">Take Out</string>
     <string name="takeout_status">Takeout Status</string>
-    <string name="adjust">Adjust display menu item</string>
-    <string name="register_now">Register now</string>
-    <string name="email">Email</string>
+
+    <!-- merchant view -->
     <string name="display_new">Display new orders</string>
-    <string name="user_name">User name</string>
-    <string name="register">Register</string>
     <string name="edit_menu">Edit Menu</string>
     <string name="notify_driver">Notify DeliveryMan</string>
     <string name="pickup_deliver">Start Deliver</string>
     <string name="order_delivery">Order Delivery</string>
     <string name="notified">Notification Summary</string>
 
-    <string name="choose_type">Choose User Type</string>
-    <string-array name="type_array">
-        <item>Customer</item>
-        <item>VIPCustomer</item>
-        <item>Merchant</item>
-        <item>DeliveryMan</item>
-    </string-array>
 </resources>
