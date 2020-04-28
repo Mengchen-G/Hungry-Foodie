@@ -33,9 +33,11 @@ public class MenuActivity extends AppCompatActivity {
         String message = "";
         if(timeOfDay < 12){
             message += "Good Morning ";
-        }else if(timeOfDay < 16){
+        }
+        else if(timeOfDay < 16){
             message += "Good Afternoon ";
-        }else if(timeOfDay < 24){
+        }
+        else {
             message += "Good Evening ";
         }
 

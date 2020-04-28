@@ -30,6 +30,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -59,7 +60,23 @@ public class PlaceAnOrder extends AppCompatActivity {
         final User current_client = (User) data.getParcelable("current_client");
 
         assert current_client != null;
-        String username = "Hi, " + current_client.getName();
+
+        Calendar c = Calendar.getInstance();
+        int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
+
+        // add greeting message based on 24-hour of the day
+        String message = "";
+        if(timeOfDay < 12){
+            message += "Good Morning ";
+        }
+        else if(timeOfDay < 16){
+            message += "Good Afternoon ";
+        }
+        else {
+            message += "Good Evening ";
+        }
+
+        String username = message + current_client.getName() + "~";
         email = current_client.getEmail();
         String password = current_client.getPassword();
         TextView user_welcome = findViewById(R.id.checkout_welcome);
