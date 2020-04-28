@@ -74,13 +74,13 @@ public class LoginActivity extends AppCompatActivity {
                                     if(documentSnapshot.getString("password").equals(login_password)) {
                                         Log.d(TAG, documentSnapshot.getString("name") + documentSnapshot.getString("email") + documentSnapshot.getString("password") + documentSnapshot.getString("type"));
                                         User user = new User(documentSnapshot.getString("name"), documentSnapshot.getString("email"), documentSnapshot.getString("password"), documentSnapshot.getString("type"));
-                                        if(documentSnapshot.getString("type") == "DeliveryMan") {
-                                            Intent startIntent = new Intent(getApplicationContext(), DeliveryLoginActivity.class);
+                                        if(documentSnapshot.getString("type").equals("DeliveryMan")) {
+                                            Intent startIntent = new Intent(getApplicationContext(), DriverNoticeActivity.class);
                                             startIntent.putExtra("current_client", user);
                                             startActivity(startIntent);
                                         }
-                                        else if(documentSnapshot.getString("type") == "Merchant") {
-                                            Intent startIntent = new Intent(getApplicationContext(), MerchantMenuActivity.class);
+                                        else if(documentSnapshot.getString("type").equals("Merchant")) {
+                                            Intent startIntent = new Intent(getApplicationContext(), MerchantMainMenuActivity.class);
                                             startIntent.putExtra("current_client", user);
                                             startActivity(startIntent);
                                         }
