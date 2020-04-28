@@ -1,7 +1,7 @@
 # Hungry-Foodie
 ## Team Members
-- Tianli Wu
-- Mengchen Gong
+- Tianli Wu (tiwu5322)
+- Mengchen Gong (Mengchen-G, theFieryDev)
 
 ## Instruction
 - Code for this application in `app` folder
@@ -11,6 +11,7 @@
   - Click the open button
   - Select the file which has our code
   - under 'Build' tab press 'Build Project'
+  - Need to install emulator before run
   - under 'Run' tab press 'Run Main'follow the prompt menu
 
 ## Patterns
