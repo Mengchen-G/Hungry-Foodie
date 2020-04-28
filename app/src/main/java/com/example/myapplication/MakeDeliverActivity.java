@@ -81,7 +81,7 @@ public class MakeDeliverActivity extends AppCompatActivity {
     public ArrayList<String> loadOrders(CollectionReference restaurant_ref) throws ExecutionException, InterruptedException {
         Task<QuerySnapshot> task = restaurant_ref.get();
         ArrayList<String> orders = new ArrayList<>();
-        Log.d(TAG, "Loading data........");
+        Log.d(TAG, "Loading data......");
 
         while(!task.isComplete()) {
             Thread.sleep(1000);
