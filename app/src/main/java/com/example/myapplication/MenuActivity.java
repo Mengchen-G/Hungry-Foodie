@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.Calendar;
+
 // menu for restaurant 1
 // Meals built by Abstract factory
 public class MenuActivity extends AppCompatActivity {
@@ -24,7 +26,20 @@ public class MenuActivity extends AppCompatActivity {
         final User current_client = (User) data.getParcelable("current_client");
         Log.d(TAG, "name: "  + current_client.getName() + " email: " + current_client.getEmail() + " password: " + current_client.getPassword());
 
-        String username = "Hi, " + current_client.getName();
+        Calendar c = Calendar.getInstance();
+        int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
+
+        // add greeting message based on 24-hour of the day
+        String message = "";
+        if(timeOfDay < 12){
+            message += "Good Morning ";
+        }else if(timeOfDay < 16){
+            message += "Good Afternoon ";
+        }else if(timeOfDay < 24){
+            message += "Good Evening ";
+        }
+
+        String username = message + current_client.getName() + "~";
         TextView user_welcome = findViewById(R.id.menu_welcome);
         user_welcome.setText(username);
         user_welcome.setVisibility(View.VISIBLE);
