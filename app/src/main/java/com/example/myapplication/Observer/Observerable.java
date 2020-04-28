@@ -1,4 +1,4 @@
-package com.example.myapplication.observer;
+package com.example.myapplication.Observer;
 
 import java.util.List;
 

@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.myapplication.observer.ConcreteObserver;
+import com.example.myapplication.Observer.ConcreteObserver;
 
 import java.util.Random;
 

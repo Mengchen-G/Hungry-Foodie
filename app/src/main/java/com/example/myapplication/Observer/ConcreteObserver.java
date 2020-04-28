@@ -1,9 +1,4 @@
-package com.example.myapplication.observer;
-
-import com.example.myapplication.abfactory.Order;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.example.myapplication.Observer;
 
 public class ConcreteObserver implements Observer {
 
