@@ -199,7 +199,7 @@ public class PlaceAnOrder extends AppCompatActivity {
                 }
                 // only allow type: customer, VIP customer to checkout
                 else {
-                    Intent startIntent = new Intent(PlaceAnOrder.this, Pop.class);
+                    Intent startIntent = new Intent(PlaceAnOrder.this, Pop_mDelivery.class);
                     startActivity(startIntent);
                 }
             }

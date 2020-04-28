@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustPan">
-        <activity android:name=".MerchantSummaryActivity"></activity>
+        <activity android:name=".Pop_loginT"></activity>
+        <activity android:name=".MerchantSummaryActivity" />
         <activity android:name=".MakeDeliverActivity" />
         <activity android:name=".DriverNoticeActivity" />
         <activity android:name=".MerchantDisplayOrder" />
@@ -30,7 +31,9 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".Pop" android:theme="@style/popWindowStyle"/>
+        <activity
+            android:name=".Pop_mDelivery"
+            android:theme="@style/popWindowStyle" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

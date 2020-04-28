@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -84,9 +83,19 @@ public class LoginActivity extends AppCompatActivity {
 //                                            startIntent.putExtra("current_client", user);
 //                                            startActivity(startIntent);
 //                                        }
-                                        Intent startIntent = new Intent(getApplicationContext(), HomeActivity.class);
-                                        startIntent.putExtra("current_client", user);
-                                        startActivity(startIntent);
+                                        if(documentSnapshot.getString("type").equals("DeliveryMan")) {
+                                            Intent startIntent = new Intent(LoginActivity.this, Pop_loginT.class);
+                                            startActivity(startIntent);
+                                        }
+                                        else if(documentSnapshot.getString("type").equals("Merchant")) {
+                                            Intent startIntent = new Intent(LoginActivity.this, Pop_loginT.class);
+                                            startActivity(startIntent);
+                                        }
+                                        else {
+                                            Intent startIntent = new Intent(getApplicationContext(), HomeActivity.class);
+                                            startIntent.putExtra("current_client", user);
+                                            startActivity(startIntent);
+                                        }
                                     }
                                     else{
                                         Toast.makeText(LoginActivity.this, "Wrong password", Toast.LENGTH_LONG).show();

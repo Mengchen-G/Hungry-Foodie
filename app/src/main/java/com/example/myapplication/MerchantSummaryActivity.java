@@ -32,7 +32,7 @@ public class MerchantSummaryActivity extends AppCompatActivity {
         checkBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent startIntent = new Intent(MerchantSummaryActivity.this, Pop.class);
+                Intent startIntent = new Intent(MerchantSummaryActivity.this, Pop_mDelivery.class);
                 startActivity(startIntent);
             }
         });

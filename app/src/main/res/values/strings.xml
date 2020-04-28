@@ -68,6 +68,7 @@
     <string name="order_delivery">Order Delivery</string>
     <string name="notified">Notification Summary</string>
     <string name="checkM">Deliver Status Follow-up</string>
-    <string name="pop_message">Pop window message here</string>
+    <string name="pop_message">Order Picked-up, Delivery in Progress</string>
+    <string name="pop_message1">Wrong Login User Type</string>
 
 </resources>
