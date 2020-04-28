@@ -19,7 +19,7 @@ public class MerchantMenuActivity extends AppCompatActivity {
         checkBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent startIntent = new Intent(MerchantMenuActivity.this, Pop_mDelivery.class);
+                Intent startIntent = new Intent(MerchantMenuActivity.this, Pop_edit.class);
                 startActivity(startIntent);
             }
         });
