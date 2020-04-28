@@ -1,4 +1,5 @@
 <resources>
+    // register, log in
     <string name="app_name">HUNGRY FOODIE</string>
     <string name="next">NEXT</string>
     <string name="previous">Previous</string>
