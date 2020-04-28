@@ -1,4 +1,4 @@
-package com.example.myapplication.command;
+package com.example.myapplication.Command;
 
 public class OrderCommand implements Command {
     private Orders foodOrder;

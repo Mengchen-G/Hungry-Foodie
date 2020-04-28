@@ -9,11 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.myapplication.abfactory.Order;
-import com.example.myapplication.command.Command;
-import com.example.myapplication.command.OrderCommand;
-import com.example.myapplication.command.OrderInvoker;
-import com.example.myapplication.command.Orders;
+import com.example.myapplication.Command.Command;
+import com.example.myapplication.Command.OrderCommand;
+import com.example.myapplication.Command.OrderInvoker;
+import com.example.myapplication.Command.Orders;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
