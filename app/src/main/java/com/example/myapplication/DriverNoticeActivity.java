@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
+// Merchant assign deliveries to DeliveryMan
 public class DriverNoticeActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference driver_ref = db.collection("Driver");

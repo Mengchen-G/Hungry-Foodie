@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
+// Using database to show all current order for merchants
 public class MerchantDisplayOrder extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference restaurant_ref;

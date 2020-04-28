@@ -18,6 +18,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+// login for drivers
 public class DeliveryLoginActivity extends AppCompatActivity {
     private static final String TAG = "Delivery Login";
     private EditText editTextEmail;
@@ -40,40 +41,40 @@ public class DeliveryLoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                final String login_email = editTextEmail.getText().toString().trim();
-                final String login_password = editTextPassword.getText().toString().trim();
+            final String login_email = editTextEmail.getText().toString().trim();
+            final String login_password = editTextPassword.getText().toString().trim();
 
-                //extract data from database
-                users_ref.document(login_email).get()
-                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                            @Override
-                            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                if(documentSnapshot.exists()){
-                                    //check password
-                                    if(documentSnapshot.getString("password").equals(login_password)) {
-                                        Log.d(TAG, documentSnapshot.getString("name") + documentSnapshot.getString("email") + documentSnapshot.getString("password") + documentSnapshot.getString("type"));
-                                        User user = new User(documentSnapshot.getString("name"), documentSnapshot.getString("email"), documentSnapshot.getString("password"), documentSnapshot.getString("type"));
-                                        Intent startIntent = new Intent(getApplicationContext(), DriverNoticeActivity.class);
-                                        startIntent.putExtra("current_client",  user);
-                                        startActivity(startIntent);
-                                    }else{
-                                        Toast.makeText(DeliveryLoginActivity.this, "Wrong password", Toast.LENGTH_LONG).show();
-                                        textResponse.setText("Wrong password!");
-                                        textResponse.setVisibility(View.VISIBLE);
-                                    }
-
-                                }else{
-                                    Toast.makeText(DeliveryLoginActivity.this, "Email does not exist!", Toast.LENGTH_LONG).show();
-                                    textResponse.setText("Email does not exist!");
-                                    textResponse.setVisibility(View.VISIBLE);
-                                }
-
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
+            //extract data from database
+            users_ref.document(login_email).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(DeliveryLoginActivity.this, "Error!", Toast.LENGTH_LONG).show();
-                        Log.d(TAG, e.toString());
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    if(documentSnapshot.exists()){
+                        //check password
+                        if(documentSnapshot.getString("password").equals(login_password)) {
+                            Log.d(TAG, documentSnapshot.getString("name") + documentSnapshot.getString("email") + documentSnapshot.getString("password") + documentSnapshot.getString("type"));
+                            User user = new User(documentSnapshot.getString("name"), documentSnapshot.getString("email"), documentSnapshot.getString("password"), documentSnapshot.getString("type"));
+                            Intent startIntent = new Intent(getApplicationContext(), DriverNoticeActivity.class);
+                            startIntent.putExtra("current_client",  user);
+                            startActivity(startIntent);
+                        }else{
+                            Toast.makeText(DeliveryLoginActivity.this, "Wrong password", Toast.LENGTH_LONG).show();
+                            textResponse.setText("Wrong password!");
+                            textResponse.setVisibility(View.VISIBLE);
+                        }
+
+                    }else{
+                        Toast.makeText(DeliveryLoginActivity.this, "Email does not exist!", Toast.LENGTH_LONG).show();
+                        textResponse.setText("Email does not exist!");
+                        textResponse.setVisibility(View.VISIBLE);
+                    }
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(DeliveryLoginActivity.this, "Error!", Toast.LENGTH_LONG).show();
+                Log.d(TAG, e.toString());
                     }
                 });
             }

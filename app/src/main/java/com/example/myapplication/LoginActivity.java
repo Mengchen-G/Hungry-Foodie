@@ -19,6 +19,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+// default type: customer
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "Login";
     private EditText editTextEmail;
@@ -83,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
 //                                            startIntent.putExtra("current_client", user);
 //                                            startActivity(startIntent);
 //                                        }
+                                        // if not customer, show pop-up error message
                                         if(documentSnapshot.getString("type").equals("DeliveryMan")) {
                                             Intent startIntent = new Intent(LoginActivity.this, Pop_loginT.class);
                                             startActivity(startIntent);

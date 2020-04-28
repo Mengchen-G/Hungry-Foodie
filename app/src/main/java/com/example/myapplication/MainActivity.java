@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
-
+// very first page of the app, register of log in
 public class MainActivity extends AppCompatActivity {
 
 

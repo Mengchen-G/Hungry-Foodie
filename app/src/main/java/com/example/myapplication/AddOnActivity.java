@@ -15,6 +15,7 @@ import com.example.myapplication.Abfactory.Restaurant;
 import java.util.ArrayList;
 import java.util.Map;
 
+// Use decorator pattern to add on extra cheese or meat and calculate new price
 public class AddOnActivity extends AppCompatActivity {
     private static final String TAG = "AddOnActivity";
     private Map<String, Object> order;

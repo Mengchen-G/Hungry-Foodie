@@ -16,6 +16,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+// functionality on merchant's end,
+// able to assign order to drivers
+// not able to get done: edit menu
 public class MerchantMainMenuActivity extends AppCompatActivity {
     private static final String TAG = "Merchant Main activity";
 

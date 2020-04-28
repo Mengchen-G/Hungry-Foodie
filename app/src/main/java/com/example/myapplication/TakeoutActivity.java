@@ -9,6 +9,7 @@ import com.example.myapplication.Observer.ConcreteObserver;
 
 import java.util.Random;
 
+// Use observer pattern to update deliver status for customer
 public class TakeoutActivity extends AppCompatActivity {
 
     private ConcreteObserver takeoutObserver = new ConcreteObserver();

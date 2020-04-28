@@ -18,6 +18,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+// login for merchants
 public class MerchantLoginActivity extends AppCompatActivity {
     private static final String TAG = "Merchant Login";
     private EditText editTextEmail;

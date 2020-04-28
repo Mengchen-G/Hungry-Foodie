@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
+// Deliveryman pick up the orders that are ready and deliver
 public class MakeDeliverActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference driver_ref = db.collection("Driver");

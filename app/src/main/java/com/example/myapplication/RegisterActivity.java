@@ -25,7 +25,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-
 public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "Register Activity";
     private static final String KEY_NAME = "name";
@@ -50,8 +49,6 @@ public class RegisterActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.register_password);
         spinnerType = findViewById(R.id.typeSpinner);
 
-
-
         Spinner typeSpinner = (Spinner) findViewById(R.id.typeSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.type_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -75,7 +72,6 @@ public class RegisterActivity extends AppCompatActivity {
                 user.put(KEY_PASSWORD, password);
                 user.put(KEY_TYPE, type);
                 user.put(KEY_CART, null);
-
 
                 db_user_info.document(email).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

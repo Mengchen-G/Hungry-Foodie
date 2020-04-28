@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+// Home page for customer after login
 public class HomeActivity extends AppCompatActivity {
     private static final String TAG = "Home";
 

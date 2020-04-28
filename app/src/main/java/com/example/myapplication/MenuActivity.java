@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+// menu for restaurant 1
+// Meals built by Abstract factory
 public class MenuActivity extends AppCompatActivity {
     private static final String TAG = "Menu";
 
