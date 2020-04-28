@@ -1,4 +1,4 @@
-package com.example.myapplication.strategy;
+package com.example.myapplication.Strategy;
 
 public class NonVIPClient extends Client{
     public NonVIPClient(String email, String name, Behavior behavior){

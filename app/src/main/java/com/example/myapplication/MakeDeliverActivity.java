@@ -61,7 +61,6 @@ public class MakeDeliverActivity extends AppCompatActivity {
         OrderInvoker orderInvoker = new OrderInvoker(orderCommand); // invoker
         String message = orderInvoker.invoke();
 
-
         TextView deliveryStatusTextView = (TextView) findViewById(R.id.dmdTextView);
         deliveryStatusTextView.setText(message);
 

@@ -4,7 +4,7 @@ import com.example.myapplication.abfactory.Meal;
 import com.example.myapplication.abfactory.MexicanRestaurant;
 import com.example.myapplication.abfactory.Order;
 import com.example.myapplication.abfactory.Restaurant;
-import com.example.myapplication.strategy.*;
+import com.example.myapplication.Strategy.*;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +23,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

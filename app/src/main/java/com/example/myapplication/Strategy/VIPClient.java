@@ -1,4 +1,4 @@
-package com.example.myapplication.strategy;
+package com.example.myapplication.Strategy;
 
 public class VIPClient extends Client {
 
