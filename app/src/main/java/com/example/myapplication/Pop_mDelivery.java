@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 
+// pop-up window for updated delivery status
 public class Pop_mDelivery extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {

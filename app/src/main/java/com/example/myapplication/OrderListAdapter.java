@@ -16,7 +16,7 @@ import com.example.myapplication.Abfactory.Order;
 
 import java.util.ArrayList;
 
-
+// Adapter pattern to adapt list to view
 public class OrderListAdapter extends ArrayAdapter<Order> {
     private Context mContext;
     private int mResource;

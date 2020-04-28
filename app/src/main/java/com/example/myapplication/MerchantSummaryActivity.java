@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+// after assign orders for drivers, check status or go back to main
 public class MerchantSummaryActivity extends AppCompatActivity {
     private static final String TAG = "M summary activity";
 

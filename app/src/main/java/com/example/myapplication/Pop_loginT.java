@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 
+// pop-up window if at wrong login place
 public class Pop_loginT extends AppCompatActivity {
 
     @Override

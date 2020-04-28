@@ -1,4 +1,5 @@
 package com.example.myapplication;
+
 import com.example.myapplication.Abfactory.AmericanRestaurant;
 import com.example.myapplication.Abfactory.Meal;
 import com.example.myapplication.Abfactory.MexicanRestaurant;
@@ -31,6 +32,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+// total view when ready to checkout
 public class ReviewActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference users_ref = db.collection("users");

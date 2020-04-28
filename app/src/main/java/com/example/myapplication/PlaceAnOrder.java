@@ -34,7 +34,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
-
+// checkout order for current customer,
+// Strategy pattern used here for different type of customers
 public class PlaceAnOrder extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference users_ref = db.collection("users");

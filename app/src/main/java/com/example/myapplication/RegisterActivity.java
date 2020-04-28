@@ -24,7 +24,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-
+// store user information in database when register
+/*
+"name";
+"email";
+"password";
+"type";
+"cart";*/
 public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "Register Activity";
     private static final String KEY_NAME = "name";

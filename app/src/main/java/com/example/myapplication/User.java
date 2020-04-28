@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import java.util.Map;
 
+// user class
 public class User implements Parcelable {
     private String name, email, password, type;
 //    private Map<String, Object> cart;
@@ -16,7 +17,6 @@ public class User implements Parcelable {
         this.password = password;
         this.type = type;
     }
-
 
     public String getName() {
         return name;

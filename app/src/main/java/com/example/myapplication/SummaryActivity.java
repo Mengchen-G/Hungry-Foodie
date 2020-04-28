@@ -15,6 +15,7 @@ import com.example.myapplication.Abfactory.Restaurant;
 
 import java.util.ArrayList;
 
+// order summary view
 public class SummaryActivity extends AppCompatActivity {
 
     private static final String TAG = "OrderSummary";
