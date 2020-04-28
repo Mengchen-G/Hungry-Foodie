@@ -70,5 +70,6 @@
     <string name="checkM">Deliver Status Follow-up</string>
     <string name="pop_message">Order Picked-up, Delivery in Progress</string>
     <string name="pop_message1">Wrong Login User Type</string>
+    <string name="pop_message2">Merchant Able to Edit Menu Here</string>
 
 </resources>
