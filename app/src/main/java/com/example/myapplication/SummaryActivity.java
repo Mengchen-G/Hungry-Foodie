@@ -6,14 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import com.example.myapplication.abfactory.AmericanRestaurant;
-import com.example.myapplication.abfactory.Meal;
-import com.example.myapplication.abfactory.Order;
-import com.example.myapplication.abfactory.Restaurant;
+import com.example.myapplication.Abfactory.AmericanRestaurant;
+import com.example.myapplication.Abfactory.Meal;
+import com.example.myapplication.Abfactory.Order;
+import com.example.myapplication.Abfactory.Restaurant;
 
 import java.util.ArrayList;
 

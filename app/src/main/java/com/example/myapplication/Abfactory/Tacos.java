@@ -1,8 +1,8 @@
-package com.example.myapplication.abfactory;
+package com.example.myapplication.Abfactory;
 
-public class Burger extends Entree {
-    String name = "Burger";
-    double price = 4.0;
+public class Tacos extends Entree{
+    String name = "Tacos";
+    double price = 3.0;
 
     public String getName(){
         return name;

@@ -11,12 +11,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.myapplication.abfactory.AmericanRestaurant;
-import com.example.myapplication.abfactory.Meal;
-import com.example.myapplication.abfactory.MexicanRestaurant;
-import com.example.myapplication.abfactory.Order;
-import com.example.myapplication.abfactory.Restaurant;
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.example.myapplication.Abfactory.AmericanRestaurant;
+import com.example.myapplication.Abfactory.Meal;
+import com.example.myapplication.Abfactory.MexicanRestaurant;
+import com.example.myapplication.Abfactory.Order;
+import com.example.myapplication.Abfactory.Restaurant;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -25,7 +24,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;

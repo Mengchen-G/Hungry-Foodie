@@ -1,4 +1,4 @@
-package com.example.myapplication.abfactory;
+package com.example.myapplication.Abfactory;
 
 public interface MealFactory {
     public abstract Drink createDrink();

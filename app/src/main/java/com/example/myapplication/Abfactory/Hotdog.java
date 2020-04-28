@@ -1,7 +1,7 @@
-package com.example.myapplication.abfactory;
+package com.example.myapplication.Abfactory;
 
-public class Chips extends Entree{
-    String name = "Chips";
+public class Hotdog extends Entree{
+    String name = "Hotdog";
     double price = 3.0;
 
     public String getName(){

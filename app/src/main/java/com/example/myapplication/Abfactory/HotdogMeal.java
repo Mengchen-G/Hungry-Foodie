@@ -1,9 +1,9 @@
-package com.example.myapplication.abfactory;
+package com.example.myapplication.Abfactory;
 
-public class TacosMeal extends Meal{
+public class HotdogMeal extends Meal{
     MealFactory mealFactory;
 
-    public TacosMeal(MealFactory mealFactory){
+    public HotdogMeal(MealFactory mealFactory){
         this.mealFactory = mealFactory;
         prepare();
     }

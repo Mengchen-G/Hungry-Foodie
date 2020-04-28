@@ -1,6 +1,6 @@
-package com.example.myapplication.abfactory;
+package com.example.myapplication.Abfactory;
 
-public class TacosMealFactory implements MealFactory {
+public class ChipsMealFactory implements MealFactory{
     @Override
     public Drink createDrink(){
         return new Lemonade();
@@ -8,6 +8,6 @@ public class TacosMealFactory implements MealFactory {
 
     @Override
     public Entree createEntree() {
-        return new Tacos();
+        return new Chips();
     }
 }

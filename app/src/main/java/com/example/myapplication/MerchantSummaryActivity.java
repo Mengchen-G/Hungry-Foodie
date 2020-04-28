@@ -9,15 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.myapplication.abfactory.Order;
-import com.example.myapplication.abfactory.Restaurant;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
 public class MerchantSummaryActivity extends AppCompatActivity {
     private static final String TAG = "M summary activity";
 

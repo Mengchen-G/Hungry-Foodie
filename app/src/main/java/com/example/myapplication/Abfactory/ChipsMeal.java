@@ -1,9 +1,9 @@
-package com.example.myapplication.abfactory;
+package com.example.myapplication.Abfactory;
 
-public class HotdogMeal extends Meal{
+public class ChipsMeal extends Meal {
     MealFactory mealFactory;
 
-    public HotdogMeal(MealFactory mealFactory){
+    public ChipsMeal(MealFactory mealFactory){
         this.mealFactory = mealFactory;
         prepare();
     }
@@ -12,4 +12,5 @@ public class HotdogMeal extends Meal{
         drink = mealFactory.createDrink();
         entree = mealFactory.createEntree();
     }
+
 }

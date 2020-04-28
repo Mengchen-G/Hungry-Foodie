@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.example.myapplication.abfactory.Restaurant;
+import com.example.myapplication.Abfactory.Restaurant;
 
 import java.util.ArrayList;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.example.myapplication.abfactory;
+package com.example.myapplication.Abfactory;
 
 public abstract class Entree {
     String name;
