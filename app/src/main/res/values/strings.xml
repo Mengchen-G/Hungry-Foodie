@@ -25,6 +25,7 @@
     <string name="user_name">User name</string>
     <string name="register">Register</string>
     <string name="choose_type">Choose User Type</string>
+    <string name="wrong_type">Only registered customer can checkout</string>
     <string-array name="type_array">
         <item>Customer</item>
         <item>VIPCustomer</item>
