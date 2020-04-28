@@ -151,12 +151,12 @@ public class PlaceAnOrder extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent startIntent = null;
+
                 if(restaurant.equals("AmericanRestaurant")){
                     startIntent = new Intent(getApplicationContext(), MenuActivity.class);
                 }else if(restaurant.equals("MexicanRestaurant")) {
                     startIntent = new Intent(getApplicationContext(), Menu2Activity.class);
                 }
-
                 startIntent.putExtra("current_client",  current_client);
                 startActivity(startIntent);
             }
@@ -168,30 +168,40 @@ public class PlaceAnOrder extends AppCompatActivity {
         nextBtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //send order to the restaurant
-                CollectionReference db_a_restaurant = db.collection(restaurant);
-                Map<String, Map<String, Object> >  order_info = new HashMap<>();
-                Map<String, Object> order = new HashMap<>();
-                for(int i = 0; i < cart_info.size(); i++){
-                    Map<String, Object> meal_info = new HashMap<>();
-                    meal_info.put("Item name", cart_info.get(String.valueOf(i)).get("Item name"));
-                    meal_info.put("Quantity", cart_info.get(String.valueOf(i)).get("Quantity"));
-                    meal_info.put("Price", cart_info.get(String.valueOf(i)).get("Price"));
-                    meal_info.put("Description", cart_info.get(String.valueOf(i)).get("Description"));
-                    order_info.put(String.valueOf(i), meal_info);
+                String customerType = (String)(current_client.getType());
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println(customerType);
+                if (customerType.equals("Customer") || customerType.equals("VIPCustomer")) {
+                    //send order to the restaurant
+                    CollectionReference db_a_restaurant = db.collection(restaurant);
+                    Map<String, Map<String, Object> >  order_info = new HashMap<>();
+                    Map<String, Object> order = new HashMap<>();
+                    for(int i = 0; i < cart_info.size(); i++){
+                        Map<String, Object> meal_info = new HashMap<>();
+                        meal_info.put("Item name", cart_info.get(String.valueOf(i)).get("Item name"));
+                        meal_info.put("Quantity", cart_info.get(String.valueOf(i)).get("Quantity"));
+                        meal_info.put("Price", cart_info.get(String.valueOf(i)).get("Price"));
+                        meal_info.put("Description", cart_info.get(String.valueOf(i)).get("Description"));
+                        order_info.put(String.valueOf(i), meal_info);
+                    }
+
+                    order.put("Customer Email", email);
+                    order.put("Orders", order_info);
+
+                    Bundle extras = new Bundle();
+                    extras.putSerializable("HashMap", (Serializable) order);
+
+                    Intent startIntent = new Intent(getApplicationContext(), OptionActivity.class);
+                    startIntent.putExtra("current_client",  current_client);
+                    startIntent.putExtras(extras);
+                    startIntent.putExtra("Restaurant", restaurant);
+                    startActivity(startIntent);
                 }
-
-                order.put("Customer Email", email);
-                order.put("Orders", order_info);
-
-                Bundle extras = new Bundle();
-                extras.putSerializable("HashMap", (Serializable) order);
-
-                Intent startIntent = new Intent(getApplicationContext(), OptionActivity.class);
-                startIntent.putExtra("current_client",  current_client);
-                startIntent.putExtras(extras);
-                startIntent.putExtra("Restaurant", restaurant);
-                startActivity(startIntent);
+                // only allow type: customer, VIP customer to checkout
+                else {
+                    Intent startIntent = new Intent(PlaceAnOrder.this, Pop.class);
+                    startActivity(startIntent);
+                }
             }
         });
     }
